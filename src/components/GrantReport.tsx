@@ -24,9 +24,12 @@ export const GrantReport = ({ record }: GrantReportProps) => {
   return (
     <div className="max-w-[210mm] mx-auto bg-card p-[12mm] min-h-[297mm] print:p-0 print:max-w-none">
       {/* Header */}
-      <div className="bg-report-header text-report-header-foreground rounded-t-lg p-5 text-center print:rounded-none">
-        <h1 className="text-xl font-bold tracking-wide">UTILIZATION CERTIFICATE 2025-26</h1>
-        <p className="text-sm mt-1 opacity-90">Mandal: AKKANNAPETA</p>
+      <div className="bg-report-header text-report-header-foreground rounded-t-lg p-5 flex items-center justify-center gap-4 print:rounded-none">
+        <img src="https://www.samagrashiksha.telangana.gov.in/SamagraShiksha/images/logo.png" alt="Samagra Shiksha Logo" className="h-14 w-14 object-contain" />
+        <div className="text-center">
+          <h1 className="text-xl font-bold tracking-wide">UTILIZATION CERTIFICATE 2025-26</h1>
+          <p className="text-sm mt-1 opacity-90">Mandal: AKKANNAPETA</p>
+        </div>
       </div>
 
       {/* School Info */}
