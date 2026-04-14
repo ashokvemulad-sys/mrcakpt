@@ -43,6 +43,8 @@ export const GrantReport = ({ record }: GrantReportProps) => {
             <th className="p-2 text-left font-semibold border border-report-header">Grant Name</th>
             <th className="p-2 text-center font-semibold border border-report-header w-28">Credited Date</th>
             <th className="p-2 text-right font-semibold border border-report-header w-28">Amount (₹)</th>
+            <th className="p-2 text-right font-semibold border border-report-header w-28">Utilized (₹)</th>
+            <th className="p-2 text-right font-semibold border border-report-header w-28">Balance (₹)</th>
           </tr>
         </thead>
         <tbody>
