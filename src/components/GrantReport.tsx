@@ -126,6 +126,15 @@ export const GrantReport = ({ record }: GrantReportProps) => {
         This is to Certify that, the above-mentioned funds (budget) are received and utilized as per the guidelines issued by the Director of School Education and Ex-Officio State Project Director, T-Samagra Shiksha, Hyderabad and the original bills are kept at SDU i.e., MRC / CRC / School / TSMS / KGBV / GH level and will be submit (facilitate) the same as required in future audit purpose i.e., Internal Audit, Statutory Audit and A.G. Team etc during the Audit.
       </div>
 
+      {/* Enclosures */}
+      <div className="mt-6 text-xs text-foreground">
+        <p className="font-bold mb-1">Enclosures:</p>
+        <p>1. Bank Statement (01.04.2025 to 31.03.2026)</p>
+        <p>2. SMC Resolution Register Xerox Copies</p>
+        <p>3. Print Payment Advice (PPA) Xerox Copies</p>
+        <p>4. Bills &amp; Vouchers Xerox Copies</p>
+      </div>
+
       {/* Footer */}
       <div className="mt-8 pt-4 border-t border-border text-xs text-muted-foreground flex justify-between print:mt-auto">
         <span>Generated on: {new Date().toLocaleDateString("en-IN")}</span>
