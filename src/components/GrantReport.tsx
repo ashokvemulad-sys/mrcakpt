@@ -31,7 +31,6 @@ export const GrantReport = ({ record }: GrantReportProps) => {
           <p className="text-sm mt-1 opacity-90">Mandal: AKKANNAPETA</p>
         </div>
       </div>
-      </div>
 
       {/* School Info */}
       <div className="border border-t-0 border-border p-4 grid grid-cols-2 gap-y-3 text-sm">
