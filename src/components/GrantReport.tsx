@@ -27,8 +27,7 @@ export const GrantReport = ({ record }: GrantReportProps) => {
       <div className="rounded-t-lg p-5 flex items-center justify-center gap-4 print:rounded-none border-b border-border">
         <img src="https://www.samagrashiksha.telangana.gov.in/SamagraShiksha/images/logo.png" alt="Samagra Shiksha Logo" className="h-14 w-14 object-contain" />
         <div className="text-center">
-          <h1 className="text-xl font-bold tracking-wide text-foreground">UTILIZATION CERTIFICATE 2025-26</h1>
-          <p className="text-sm mt-1 text-muted-foreground">Mandal: AKKANNAPETA</p>
+          <h1 className="text-xl font-bold tracking-wide text-foreground underline">UTILIZATION CERTIFICATE 2025-26</h1>
         </div>
       </div>
 
@@ -45,6 +44,22 @@ export const GrantReport = ({ record }: GrantReportProps) => {
         <div>
           <span className="text-muted-foreground">U-DISE Code:</span>
           <p className="font-semibold text-foreground">{record.uDise}</p>
+        </div>
+        <div>
+          <span className="text-muted-foreground">Name of the Bank:</span>
+          <p className="font-semibold text-foreground">—</p>
+        </div>
+        <div>
+          <span className="text-muted-foreground">SMC A/C No:</span>
+          <p className="font-semibold text-foreground">—</p>
+        </div>
+        <div>
+          <span className="text-muted-foreground">Bank IFSC:</span>
+          <p className="font-semibold text-foreground">—</p>
+        </div>
+        <div>
+          <span className="text-muted-foreground">Financial Year:</span>
+          <p className="font-semibold text-foreground">2025-26</p>
         </div>
         <div>
           <span className="text-muted-foreground">Total Grants:</span>
