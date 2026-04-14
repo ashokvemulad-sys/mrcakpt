@@ -25,8 +25,8 @@ export const GrantReport = ({ record }: GrantReportProps) => {
     <div className="max-w-[210mm] mx-auto bg-card p-[12mm] min-h-[297mm] print:p-0 print:max-w-none">
       {/* Header */}
       <div className="bg-report-header text-report-header-foreground rounded-t-lg p-5 text-center print:rounded-none">
-        <h1 className="text-xl font-bold tracking-wide">SCHOOL GRANTS STATEMENT</h1>
-        <p className="text-sm mt-1 opacity-90">Mandal: AKKANNAPETA | Financial Year 2025-26</p>
+        <h1 className="text-xl font-bold tracking-wide">UTILIZATION CERTIFICATE 2025-26</h1>
+        <p className="text-sm mt-1 opacity-90">Mandal: AKKANNAPETA</p>
       </div>
 
       {/* School Info */}
