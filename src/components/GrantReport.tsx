@@ -82,42 +82,6 @@ export const GrantReport = ({ record }: GrantReportProps) => {
         )}
       </table>
 
-      {/* All Grants Detail (including zeros) */}
-      <div className="mt-6 print:mt-4">
-        <h2 className="text-sm font-bold text-foreground mb-2 border-b border-border pb-1">
-          Complete Grant-wise Breakup
-        </h2>
-        <table className="w-full border-collapse text-xs">
-          <thead>
-            <tr className="bg-muted">
-              <th className="p-1.5 text-left border border-border">S.No</th>
-              <th className="p-1.5 text-left border border-border">Grant Name</th>
-              <th className="p-1.5 text-center border border-border">Date</th>
-              <th className="p-1.5 text-right border border-border">Amount (₹)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {record.grants.map((grant, idx) => (
-              <tr key={idx} className={idx % 2 === 0 ? "bg-card" : "bg-report-stripe"}>
-                <td className="p-1.5 border border-border text-center">{idx + 1}</td>
-                <td className="p-1.5 border border-border">{grant.name}</td>
-                <td className="p-1.5 border border-border text-center">{grant.date}</td>
-                <td className={`p-1.5 border border-border text-right ${grant.amount > 0 ? "font-medium" : "text-muted-foreground"}`}>
-                  {grant.amount > 0 ? grant.amount.toLocaleString("en-IN") : "—"}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-          <tfoot>
-            <tr className="bg-report-total font-bold text-sm">
-              <td colSpan={3} className="p-1.5 border border-border text-right">Grand Total</td>
-              <td className="p-1.5 border border-border text-right text-primary">
-                ₹{record.grandTotal.toLocaleString("en-IN")}
-              </td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
 
       {/* Footer */}
       <div className="mt-8 pt-4 border-t border-border text-xs text-muted-foreground flex justify-between print:mt-auto">
