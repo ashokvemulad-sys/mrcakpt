@@ -33,10 +33,10 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    --report-header: 215 80% 30%;
-    --report-header-foreground: 0 0% 100%;
-    --report-stripe: 210 30% 96%;
-    --report-total: 215 80% 95%;
+    --report-header: 25 60% 25%;
+    --report-header-foreground: 40 80% 95%;
+    --report-stripe: 40 40% 95%;
+    --report-total: 40 50% 90%;
     --success: 142 70% 40%;
     --success-foreground: 0 0% 100%;
   }
