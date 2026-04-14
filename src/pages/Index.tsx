@@ -1,13 +1,16 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import { grantsData, GrantRecord } from "@/data/grantsData";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, Printer, X } from "lucide-react";
+import { Search, Printer, Download, X } from "lucide-react";
 import { GrantReport } from "@/components/GrantReport";
+import html2canvas from "html2canvas-pro";
+import { jsPDF } from "jspdf";
 
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedRecord, setSelectedRecord] = useState<GrantRecord | null>(null);
+  const reportRef = useRef<HTMLDivElement>(null);
 
   const filteredResults = useMemo(() => {
     if (!searchTerm.trim()) return [];
@@ -22,18 +25,39 @@ const Index = () => {
 
   const handlePrint = () => window.print();
 
+  const handleDownloadPDF = async () => {
+    if (!reportRef.current) return;
+    const canvas = await html2canvas(reportRef.current, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: null,
+    });
+    const imgData = canvas.toDataURL("image/png");
+    const pdf = new jsPDF("p", "mm", "a4");
+    const pdfWidth = 210;
+    const pdfHeight = 297;
+    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+    const schoolName = selectedRecord?.smcName?.replace(/\s+/g, "_") || "certificate";
+    pdf.save(`${schoolName}_UC_2025-26.pdf`);
+  };
+
   if (selectedRecord) {
     return (
       <>
         <div className="no-print fixed top-4 right-4 z-50 flex gap-2">
+          <Button onClick={handleDownloadPDF} className="bg-green-600 hover:bg-green-700 text-white gap-2">
+            <Download className="h-4 w-4" /> Download PDF
+          </Button>
           <Button onClick={handlePrint} className="bg-primary text-primary-foreground gap-2">
-            <Printer className="h-4 w-4" /> Print Report
+            <Printer className="h-4 w-4" /> Print
           </Button>
           <Button variant="outline" onClick={() => setSelectedRecord(null)} className="gap-2">
             <X className="h-4 w-4" /> Back
           </Button>
         </div>
-        <GrantReport record={selectedRecord} />
+        <div ref={reportRef}>
+          <GrantReport record={selectedRecord} />
+        </div>
       </>
     );
   }
