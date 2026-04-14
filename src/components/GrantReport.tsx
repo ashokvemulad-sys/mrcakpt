@@ -121,6 +121,11 @@ export const GrantReport = ({ record }: GrantReportProps) => {
         )}
       </table>
 
+      {/* Certification Text */}
+      <div className="mt-6 p-4 border border-border rounded text-sm text-foreground leading-relaxed text-justify">
+        This is to Certify that, the above-mentioned funds (budget) are received and utilized as per the guidelines issued by the Director of School Education and Ex-Officio State Project Director, T-Samagra Shiksha, Hyderabad and the original bills are kept at SDU i.e., MRC / CRC / School / TSMS / KGBV / GH level and will be submit (facilitate) the same as required in future audit purpose i.e., Internal Audit, Statutory Audit and A.G. Team etc during the Audit.
+      </div>
+
       {/* Footer */}
       <div className="mt-8 pt-4 border-t border-border text-xs text-muted-foreground flex justify-between print:mt-auto">
         <span>Generated on: {new Date().toLocaleDateString("en-IN")}</span>
