@@ -126,13 +126,27 @@ export const GrantReport = ({ record }: GrantReportProps) => {
         This is to Certify that, the above-mentioned funds (budget) are received and utilized as per the guidelines issued by the Director of School Education and Ex-Officio State Project Director, T-Samagra Shiksha, Hyderabad and the original bills are kept at SDU i.e., MRC / CRC / School / TSMS / KGBV / GH level and will be submit (facilitate) the same as required in future audit purpose i.e., Internal Audit, Statutory Audit and A.G. Team etc during the Audit.
       </div>
 
-      {/* Enclosures */}
-      <div className="mt-6 text-xs text-foreground">
-        <p className="font-bold mb-1">Enclosures:</p>
-        <p>1. Bank Statement (01.04.2025 to 31.03.2026)</p>
-        <p>2. SMC Resolution Register Xerox Copies</p>
-        <p>3. Print Payment Advice (PPA) Xerox Copies</p>
-        <p>4. Bills &amp; Vouchers Xerox Copies</p>
+      {/* Enclosures & Signature */}
+      <div className="mt-6 flex justify-between items-start">
+        <div className="text-xs text-foreground">
+          <p className="font-bold mb-1">Enclosures:</p>
+          <p>1. Bank Statement (01.04.2025 to 31.03.2026)</p>
+          <p>2. SMC Resolution Register Xerox Copies</p>
+          <p>3. Print Payment Advice (PPA) Xerox Copies</p>
+          <p>4. Bills &amp; Vouchers Xerox Copies</p>
+        </div>
+        <div className="text-xs text-foreground text-right">
+          <div className="border-b border-foreground w-48 mb-1 mt-8"></div>
+          <p className="font-bold">Signature of Headmaster</p>
+          <p className="mt-1">{record.smcName}</p>
+          <p>U-DISE: {record.uDise}</p>
+        </div>
+      </div>
+
+      {/* Counter Signature */}
+      <div className="mt-12 text-center text-xs text-foreground">
+        <div className="border-b border-foreground w-56 mx-auto mb-1"></div>
+        <p className="font-bold">Counter Signed by Mandal Educational Officer</p>
       </div>
 
       {/* Footer */}
