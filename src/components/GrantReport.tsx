@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { GrantRecord } from "@/data/grantsData";
 
 interface GrantReportProps {
@@ -6,6 +7,19 @@ interface GrantReportProps {
 
 export const GrantReport = ({ record }: GrantReportProps) => {
   const nonZeroGrants = record.grants.filter((g) => g.amount > 0);
+  const [utilized, setUtilized] = useState<Record<number, number>>({});
+
+  const handleUtilizedChange = (idx: number, value: string) => {
+    const num = parseFloat(value) || 0;
+    setUtilized((prev) => ({ ...prev, [idx]: num }));
+  };
+
+  const getBalance = (idx: number, amount: number) => {
+    return amount - (utilized[idx] || 0);
+  };
+
+  const totalUtilized = nonZeroGrants.reduce((sum, _, idx) => sum + (utilized[idx] || 0), 0);
+  const totalBalance = record.grandTotal - totalUtilized;
 
   return (
     <div className="max-w-[210mm] mx-auto bg-card p-[12mm] min-h-[297mm] print:p-0 print:max-w-none">
@@ -42,7 +56,7 @@ export const GrantReport = ({ record }: GrantReportProps) => {
             <th className="p-2 text-left font-semibold border border-report-header w-10">S.No</th>
             <th className="p-2 text-left font-semibold border border-report-header">Grant Name</th>
             <th className="p-2 text-center font-semibold border border-report-header w-28">Credited Date</th>
-            <th className="p-2 text-right font-semibold border border-report-header w-28">Amount (₹)</th>
+            <th className="p-2 text-right font-semibold border border-report-header w-28">Credited (₹)</th>
             <th className="p-2 text-right font-semibold border border-report-header w-28">Utilized (₹)</th>
             <th className="p-2 text-right font-semibold border border-report-header w-28">Balance (₹)</th>
           </tr>
@@ -60,8 +74,20 @@ export const GrantReport = ({ record }: GrantReportProps) => {
                 <td className="p-2 border border-border text-right font-medium">
                   {grant.amount.toLocaleString("en-IN")}
                 </td>
-                <td className="p-2 border border-border text-right"></td>
-                <td className="p-2 border border-border text-right"></td>
+                <td className="p-1 border border-border text-right">
+                  <input
+                    type="number"
+                    min={0}
+                    max={grant.amount}
+                    value={utilized[idx] || ""}
+                    onChange={(e) => handleUtilizedChange(idx, e.target.value)}
+                    className="w-full text-right bg-transparent border border-border rounded px-2 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-primary print:border-none print:ring-0"
+                    placeholder="0"
+                  />
+                </td>
+                <td className="p-2 border border-border text-right font-medium">
+                  {getBalance(idx, grant.amount).toLocaleString("en-IN")}
+                </td>
               </tr>
             ))
           ) : (
@@ -81,13 +107,16 @@ export const GrantReport = ({ record }: GrantReportProps) => {
               <td className="p-2 border border-border text-right text-primary">
                 ₹{record.grandTotal.toLocaleString("en-IN")}
               </td>
-              <td className="p-2 border border-border text-right"></td>
-              <td className="p-2 border border-border text-right"></td>
+              <td className="p-2 border border-border text-right">
+                ₹{totalUtilized.toLocaleString("en-IN")}
+              </td>
+              <td className="p-2 border border-border text-right">
+                ₹{totalBalance.toLocaleString("en-IN")}
+              </td>
             </tr>
           </tfoot>
         )}
       </table>
-
 
       {/* Footer */}
       <div className="mt-8 pt-4 border-t border-border text-xs text-muted-foreground flex justify-between print:mt-auto">
