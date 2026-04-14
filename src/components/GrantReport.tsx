@@ -60,11 +60,13 @@ export const GrantReport = ({ record }: GrantReportProps) => {
                 <td className="p-2 border border-border text-right font-medium">
                   {grant.amount.toLocaleString("en-IN")}
                 </td>
+                <td className="p-2 border border-border text-right"></td>
+                <td className="p-2 border border-border text-right"></td>
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan={4} className="p-6 text-center text-muted-foreground border border-border">
+              <td colSpan={6} className="p-6 text-center text-muted-foreground border border-border">
                 No grants credited for this school
               </td>
             </tr>
@@ -79,6 +81,8 @@ export const GrantReport = ({ record }: GrantReportProps) => {
               <td className="p-2 border border-border text-right text-primary">
                 ₹{record.grandTotal.toLocaleString("en-IN")}
               </td>
+              <td className="p-2 border border-border text-right"></td>
+              <td className="p-2 border border-border text-right"></td>
             </tr>
           </tfoot>
         )}
