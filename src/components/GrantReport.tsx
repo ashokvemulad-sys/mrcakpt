@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { GrantRecord } from "@/data/grantsData";
 
 interface GrantReportProps {
@@ -7,25 +6,6 @@ interface GrantReportProps {
 
 export const GrantReport = ({ record }: GrantReportProps) => {
   const nonZeroGrants = record.grants.filter((g) => g.amount > 0);
-  const [utilized, setUtilized] = useState<Record<number, number>>({});
-  const [bankName, setBankName] = useState("");
-  const [smcAcNo, setSmcAcNo] = useState("");
-  const [bankIfsc, setBankIfsc] = useState("");
-  const [mobile, setMobile] = useState("");
-
-  const handleUtilizedChange = (idx: number, value: string) => {
-    const num = parseFloat(value) || 0;
-    setUtilized((prev) => ({ ...prev, [idx]: num }));
-  };
-
-  const getBalance = (idx: number, amount: number) => {
-    return amount - (utilized[idx] || 0);
-  };
-
-  const totalUtilized = nonZeroGrants.reduce((sum, _, idx) => sum + (utilized[idx] || 0), 0);
-  const totalBalance = record.grandTotal - totalUtilized;
-
-  const editableClass = "bg-transparent border-b border-dashed border-muted-foreground focus:outline-none focus:border-primary text-foreground font-semibold print:border-none";
 
   return (
     <div className="max-w-[210mm] mx-auto bg-[hsl(40,40%,97%)] p-[8mm] h-[297mm] print:p-[8mm] print:max-w-none print:h-[297mm] border-2 border-[hsl(25,50%,35%)] flex flex-col overflow-hidden">
@@ -53,19 +33,19 @@ export const GrantReport = ({ record }: GrantReportProps) => {
         </div>
         <div>
           <span className="text-muted-foreground">Name of the Bank:</span>
-          <input type="text" value={bankName} onChange={(e) => setBankName(e.target.value)} placeholder="Enter bank name" className={`${editableClass} w-full text-xs`} />
+          <p className="font-semibold text-foreground">{record.bankName || "—"}</p>
         </div>
         <div>
           <span className="text-muted-foreground">SMC A/C No:</span>
-          <input type="text" value={smcAcNo} onChange={(e) => setSmcAcNo(e.target.value)} placeholder="Enter A/C number" className={`${editableClass} w-full text-xs`} />
+          <p className="font-semibold text-foreground">{record.smcAcNo || "—"}</p>
         </div>
         <div>
           <span className="text-muted-foreground">Bank IFSC:</span>
-          <input type="text" value={bankIfsc} onChange={(e) => setBankIfsc(e.target.value)} placeholder="Enter IFSC code" className={`${editableClass} w-full text-xs`} />
+          <p className="font-semibold text-foreground">{record.bankIfsc || "—"}</p>
         </div>
         <div>
           <span className="text-muted-foreground">Financial Year:</span>
-          <p className="font-semibold text-foreground">2025-26</p>
+          <p className="font-semibold text-foreground">{record.financialYear}</p>
         </div>
         <div>
           <span className="text-muted-foreground">Total Grants:</span>
@@ -88,30 +68,17 @@ export const GrantReport = ({ record }: GrantReportProps) => {
         <tbody>
           {nonZeroGrants.length > 0 ? (
             nonZeroGrants.map((grant, idx) => (
-              <tr
-                key={idx}
-                className={idx % 2 === 0 ? "bg-card" : "bg-report-stripe"}
-              >
+              <tr key={idx} className={idx % 2 === 0 ? "bg-card" : "bg-report-stripe"}>
                 <td className="p-1.5 border border-border text-center">{idx + 1}</td>
                 <td className="p-1.5 border border-border">{grant.name}</td>
                 <td className="p-1.5 border border-border text-center">{grant.date}</td>
                 <td className="p-1.5 border border-border text-right font-medium">
                   {grant.amount.toLocaleString("en-IN")}
                 </td>
-                <td className="p-1 border border-border text-right">
-                  <input
-                    type="number"
-                    min={0}
-                    max={grant.amount}
-                    value={utilized[idx] || ""}
-                    onChange={(e) => handleUtilizedChange(idx, e.target.value)}
-                    className="w-full text-right bg-transparent border border-border rounded px-1 py-0.5 text-xs focus:outline-none focus:ring-1 focus:ring-primary print:border-none print:ring-0"
-                    placeholder="0"
-                  />
-                </td>
                 <td className="p-1.5 border border-border text-right font-medium">
-                  {getBalance(idx, grant.amount).toLocaleString("en-IN")}
+                  {grant.amount.toLocaleString("en-IN")}
                 </td>
+                <td className="p-1.5 border border-border text-right font-medium">0</td>
               </tr>
             ))
           ) : (
@@ -125,18 +92,14 @@ export const GrantReport = ({ record }: GrantReportProps) => {
         {nonZeroGrants.length > 0 && (
           <tfoot>
             <tr className="bg-report-total font-bold">
-              <td colSpan={3} className="p-1.5 border border-border text-right">
-                Grand Total
-              </td>
+              <td colSpan={3} className="p-1.5 border border-border text-right">Grand Total</td>
               <td className="p-1.5 border border-border text-right text-primary">
                 ₹{record.grandTotal.toLocaleString("en-IN")}
               </td>
               <td className="p-1.5 border border-border text-right">
-                ₹{totalUtilized.toLocaleString("en-IN")}
+                ₹{record.grandTotal.toLocaleString("en-IN")}
               </td>
-              <td className="p-1.5 border border-border text-right">
-                ₹{totalBalance.toLocaleString("en-IN")}
-              </td>
+              <td className="p-1.5 border border-border text-right">₹0</td>
             </tr>
           </tfoot>
         )}
@@ -159,12 +122,13 @@ export const GrantReport = ({ record }: GrantReportProps) => {
         <div className="text-[10px] text-foreground text-right">
           <div className="border-b border-foreground w-44 mb-1 mt-6"></div>
           <p className="font-bold">Signature of Headmaster</p>
+          <p className="font-semibold mt-0.5">{record.hmName || ""}</p>
           <p className="mt-0.5">{record.smcName}</p>
           <p>U-DISE: {record.uDise}</p>
-          <div className="mt-1 flex items-center justify-end gap-1">
-            <span className="text-muted-foreground">Mobile:</span>
-            <input type="tel" value={mobile} onChange={(e) => setMobile(e.target.value)} placeholder="Enter mobile" className={`${editableClass} w-28 text-[10px]`} />
-          </div>
+          <p className="mt-0.5">
+            <span className="text-muted-foreground">Mobile: </span>
+            <span className="font-semibold">{record.mobile || "—"}</span>
+          </p>
         </div>
       </div>
 
