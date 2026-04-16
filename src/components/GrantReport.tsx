@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { GrantRecord } from "@/data/grantsData";
 
 interface GrantReportProps {
@@ -6,6 +7,26 @@ interface GrantReportProps {
 
 export const GrantReport = ({ record }: GrantReportProps) => {
   const nonZeroGrants = record.grants.filter((g) => g.amount > 0);
+  // Pre-fill utilized with credited amounts
+  const [utilized, setUtilized] = useState<Record<number, number>>(() => {
+    const initial: Record<number, number> = {};
+    nonZeroGrants.forEach((g, idx) => {
+      initial[idx] = g.amount;
+    });
+    return initial;
+  });
+
+  const handleUtilizedChange = (idx: number, value: string) => {
+    const num = parseFloat(value) || 0;
+    setUtilized((prev) => ({ ...prev, [idx]: num }));
+  };
+
+  const getBalance = (idx: number, amount: number) => {
+    return amount - (utilized[idx] || 0);
+  };
+
+  const totalUtilized = nonZeroGrants.reduce((sum, _, idx) => sum + (utilized[idx] || 0), 0);
+  const totalBalance = record.grandTotal - totalUtilized;
 
   return (
     <div className="max-w-[210mm] mx-auto bg-[hsl(40,40%,97%)] p-[8mm] h-[297mm] print:p-[8mm] print:max-w-none print:h-[297mm] border-2 border-[hsl(25,50%,35%)] flex flex-col overflow-hidden">
@@ -75,10 +96,19 @@ export const GrantReport = ({ record }: GrantReportProps) => {
                 <td className="p-1.5 border border-border text-right font-medium">
                   {grant.amount.toLocaleString("en-IN")}
                 </td>
-                <td className="p-1.5 border border-border text-right font-medium">
-                  {grant.amount.toLocaleString("en-IN")}
+                <td className="p-1 border border-border text-right">
+                  <input
+                    type="number"
+                    min={0}
+                    max={grant.amount}
+                    value={utilized[idx] ?? ""}
+                    onChange={(e) => handleUtilizedChange(idx, e.target.value)}
+                    className="w-full text-right bg-transparent border border-border rounded px-1 py-0.5 text-xs focus:outline-none focus:ring-1 focus:ring-primary print:border-none print:ring-0"
+                  />
                 </td>
-                <td className="p-1.5 border border-border text-right font-medium">0</td>
+                <td className="p-1.5 border border-border text-right font-medium">
+                  {getBalance(idx, grant.amount).toLocaleString("en-IN")}
+                </td>
               </tr>
             ))
           ) : (
@@ -97,9 +127,11 @@ export const GrantReport = ({ record }: GrantReportProps) => {
                 ₹{record.grandTotal.toLocaleString("en-IN")}
               </td>
               <td className="p-1.5 border border-border text-right">
-                ₹{record.grandTotal.toLocaleString("en-IN")}
+                ₹{totalUtilized.toLocaleString("en-IN")}
               </td>
-              <td className="p-1.5 border border-border text-right">₹0</td>
+              <td className="p-1.5 border border-border text-right">
+                ₹{totalBalance.toLocaleString("en-IN")}
+              </td>
             </tr>
           </tfoot>
         )}
