@@ -94,6 +94,31 @@ const Index = () => {
                 <X className="h-4 w-4" />
               </button>
             )}
+            {/* Dropdown results */}
+            {searchTerm && filteredResults.length > 0 && (
+              <div className="absolute top-full left-0 right-0 mt-1 bg-card border border-border rounded-lg shadow-lg z-50 max-h-72 overflow-y-auto">
+                {filteredResults.map((record) => (
+                  <button
+                    key={record.pfmsCode}
+                    onClick={() => {
+                      setSelectedRecord(record);
+                      setSearchTerm("");
+                    }}
+                    className="w-full text-left px-4 py-3 hover:bg-accent transition-colors border-b border-border last:border-b-0"
+                  >
+                    <p className="font-semibold text-foreground text-sm">{record.smcName}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">
+                      PFMS: {record.pfmsCode} | U-DISE: {record.uDise} | ₹{record.grandTotal.toLocaleString("en-IN")}
+                    </p>
+                  </button>
+                ))}
+              </div>
+            )}
+            {searchTerm && filteredResults.length === 0 && (
+              <div className="absolute top-full left-0 right-0 mt-1 bg-card border border-border rounded-lg shadow-lg z-50 px-4 py-3 text-sm text-muted-foreground">
+                No results found
+              </div>
+            )}
           </div>
           <Button
             onClick={() => setBatchPrint(true)}
@@ -103,33 +128,6 @@ const Index = () => {
           </Button>
         </div>
 
-        {searchTerm && (
-          <p className="text-sm text-muted-foreground mb-2">
-            {filteredResults.length} result{filteredResults.length !== 1 ? "s" : ""} found
-          </p>
-        )}
-
-        <div className="space-y-2">
-          {filteredResults.map((record) => (
-            <button
-              key={record.pfmsCode}
-              onClick={() => setSelectedRecord(record)}
-              className="w-full text-left p-4 rounded-lg border border-border bg-card hover:border-primary hover:shadow-md transition-all"
-            >
-              <div className="flex justify-between items-start">
-                <div>
-                  <p className="font-semibold text-foreground">{record.smcName}</p>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    PFMS: {record.pfmsCode} &nbsp;|&nbsp; U-DISE: {record.uDise}
-                  </p>
-                </div>
-                <span className="text-sm font-bold text-primary whitespace-nowrap ml-4">
-                  ₹{record.grandTotal.toLocaleString("en-IN")}
-                </span>
-              </div>
-            </button>
-          ))}
-        </div>
 
         {!searchTerm && (
           <div className="text-center mt-16 text-muted-foreground">
