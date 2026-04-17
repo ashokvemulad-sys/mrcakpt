@@ -38,6 +38,8 @@ const numberToWords = (num: number): string => {
 
 export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps) => {
   const amountWords = numberToWords(grant.amount) + " Only";
+  const editableCellClass =
+    "p-1.5 border border-border outline-none focus:bg-accent/30 print:bg-transparent min-h-[28px]";
 
   return (
     <div className="max-w-[210mm] mx-auto bg-white p-[10mm] h-[297mm] print:p-[10mm] print:max-w-none print:h-[297mm] border-2 border-[hsl(25,50%,35%)] flex flex-col overflow-hidden text-[11px] text-foreground">
@@ -120,38 +122,38 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
           <tr>
             <td className="p-1.5 border border-border text-center">1</td>
             <td className="p-1.5 border border-border">PPA No. &amp; Date</td>
-            <td className="p-1.5 border border-border h-7"></td>
-            <td className="p-1.5 border border-border"></td>
+            <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
+            <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
           </tr>
           <tr>
             <td className="p-1.5 border border-border text-center">2</td>
             <td className="p-1.5 border border-border">In whose favour the PPA received</td>
-            <td className="p-1.5 border border-border h-7"></td>
-            <td className="p-1.5 border border-border"></td>
+            <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
+            <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
           </tr>
           <tr>
             <td className="p-1.5 border border-border text-center">3</td>
             <td className="p-1.5 border border-border">Amount of the PPA (Rs.)</td>
-            <td className="p-1.5 border border-border h-7">{grant.amount.toLocaleString("en-IN")}</td>
-            <td className="p-1.5 border border-border"></td>
+            <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
+            <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
           </tr>
           <tr>
             <td className="p-1.5 border border-border text-center">4</td>
             <td className="p-1.5 border border-border">Date of remittance into the bank</td>
-            <td className="p-1.5 border border-border h-7">{grant.date}</td>
-            <td className="p-1.5 border border-border"></td>
+            <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
+            <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
           </tr>
           <tr>
             <td className="p-1.5 border border-border text-center">5</td>
             <td className="p-1.5 border border-border">Bank A/c No.</td>
-            <td className="p-1.5 border border-border h-7">{record.smcAcNo || ""}</td>
-            <td className="p-1.5 border border-border"></td>
+            <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
+            <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
           </tr>
           <tr>
             <td className="p-1.5 border border-border text-center">6</td>
             <td className="p-1.5 border border-border">In whose favour the above A/c exists</td>
-            <td className="p-1.5 border border-border h-7">{record.smcName}</td>
-            <td className="p-1.5 border border-border"></td>
+            <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
+            <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
           </tr>
           <tr className="bg-report-total font-bold">
             <td colSpan={2} className="p-1.5 border border-border text-right">TOTAL</td>
