@@ -157,8 +157,8 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
           </tr>
           <tr className="bg-report-total font-bold">
             <td colSpan={2} className="p-1.5 border border-border text-right">TOTAL</td>
-            <td className="p-1.5 border border-border text-right">{grant.amount.toLocaleString("en-IN")}</td>
-            <td className="p-1.5 border border-border"></td>
+            <td className={editableCellClass + " text-right"} contentEditable suppressContentEditableWarning></td>
+            <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
           </tr>
         </tbody>
       </table>
