@@ -81,63 +81,70 @@ const Index = () => {
       </header>
 
       <main className="max-w-3xl mx-auto px-4 py-8">
-        <div className="flex gap-2 mb-4">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-            <Input
-              placeholder="Search school name, PFMS code, or U-DISE code..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 h-12 text-base border-2 border-border focus:border-primary"
-            />
-            {searchTerm && (
-              <button
-                onClick={() => setSearchTerm("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            )}
-            {/* Dropdown results */}
-            {searchTerm && filteredResults.length > 0 && (
-              <div className="absolute top-full left-0 right-0 mt-1 bg-card border border-border rounded-lg shadow-lg z-50 max-h-72 overflow-y-auto">
-                {filteredResults.map((record) => (
-                  <button
-                    key={record.pfmsCode}
-                    onClick={() => {
-                      setSelectedRecord(record);
-                      setSearchTerm("");
-                    }}
-                    className="w-full text-left px-4 py-3 hover:bg-accent transition-colors border-b border-border last:border-b-0"
-                  >
-                    <p className="font-semibold text-foreground text-sm">{record.smcName}</p>
-                    <p className="text-xs text-muted-foreground mt-0.5">
-                      PFMS: {record.pfmsCode} | U-DISE: {record.uDise} | ₹{record.grandTotal.toLocaleString("en-IN")}
-                    </p>
-                  </button>
-                ))}
-              </div>
-            )}
-            {searchTerm && filteredResults.length === 0 && (
-              <div className="absolute top-full left-0 right-0 mt-1 bg-card border border-border rounded-lg shadow-lg z-50 px-4 py-3 text-sm text-muted-foreground">
-                No results found
-              </div>
-            )}
+        {!searchOpen ? (
+          <div className="text-center mt-16">
+            <Search className="h-16 w-16 mx-auto mb-4 opacity-20 text-muted-foreground" />
+            <p className="text-lg text-muted-foreground mb-1">Find a school to view its grants</p>
+            <p className="text-sm text-muted-foreground mb-6">Total {grantsData.length} schools in database</p>
+            <Button
+              onClick={() => setSearchOpen(true)}
+              className="h-12 px-6 gap-2 bg-primary text-primary-foreground"
+            >
+              <Search className="h-5 w-5" /> Search Schools
+            </Button>
           </div>
-          <Button
-            onClick={() => setBatchPrint(true)}
-            className="h-12 bg-green-600 hover:bg-green-700 text-white gap-2 whitespace-nowrap"
-          >
-            <FileText className="h-4 w-4" /> Print All ({grantsData.length})
-          </Button>
-        </div>
-
-
-        {!searchTerm && (
-          <div className="text-center mt-16 text-muted-foreground">
-            <Search className="h-16 w-16 mx-auto mb-4 opacity-20" />
-            <p className="text-lg">Start typing to search for a school</p>
-            <p className="text-sm mt-1">Total {grantsData.length} schools in database</p>
+        ) : (
+          <div className="flex gap-2 mb-4">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <Input
+                autoFocus
+                placeholder="Search school name, PFMS code, or U-DISE code..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10 h-12 text-base border-2 border-border focus:border-primary"
+              />
+              {searchTerm && (
+                <button
+                  onClick={() => setSearchTerm("")}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              )}
+              {searchTerm && filteredResults.length > 0 && (
+                <div className="absolute top-full left-0 right-0 mt-1 bg-card border border-border rounded-lg shadow-lg z-50 max-h-72 overflow-y-auto">
+                  {filteredResults.map((record) => (
+                    <button
+                      key={record.pfmsCode}
+                      onClick={() => {
+                        setSelectedRecord(record);
+                        setSearchTerm("");
+                        setSearchOpen(false);
+                      }}
+                      className="w-full text-left px-4 py-3 hover:bg-accent transition-colors border-b border-border last:border-b-0"
+                    >
+                      <p className="font-semibold text-foreground text-sm">{record.smcName}</p>
+                      <p className="text-xs text-muted-foreground mt-0.5">
+                        PFMS: {record.pfmsCode} | U-DISE: {record.uDise} | ₹{record.grandTotal.toLocaleString("en-IN")}
+                      </p>
+                    </button>
+                  ))}
+                </div>
+              )}
+              {searchTerm && filteredResults.length === 0 && (
+                <div className="absolute top-full left-0 right-0 mt-1 bg-card border border-border rounded-lg shadow-lg z-50 px-4 py-3 text-sm text-muted-foreground">
+                  No results found
+                </div>
+              )}
+            </div>
+            <Button
+              variant="outline"
+              onClick={() => { setSearchOpen(false); setSearchTerm(""); }}
+              className="h-12 gap-2"
+            >
+              <X className="h-4 w-4" /> Close
+            </Button>
           </div>
         )}
       </main>
