@@ -113,9 +113,9 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
         <thead>
           <tr className="bg-report-header text-report-header-foreground">
             <th className="p-1.5 border border-report-header w-10">S.No</th>
-            <th className="p-1.5 border border-report-header text-left">Credit Particulars</th>
-            <th className="p-1.5 border border-report-header text-left">Sub-Voucher No. &amp; Date with Description</th>
-            <th className="p-1.5 border border-report-header text-left">Details of Expenditure</th>
+            <th className="p-1.5 border border-report-header text-left w-[28%]">Credit Particulars</th>
+            <th className="p-1.5 border border-report-header text-left w-[22%]">PPA Description</th>
+            <th className="p-1.5 border border-report-header text-left">Sub-Voucher No. &amp; Date with Details of Expenditure</th>
           </tr>
         </thead>
         <tbody>
