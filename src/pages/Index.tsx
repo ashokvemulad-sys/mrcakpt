@@ -9,8 +9,8 @@ import { GrantVoucher } from "@/components/GrantVoucher";
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedRecord, setSelectedRecord] = useState<GrantRecord | null>(null);
-  const [batchPrint, setBatchPrint] = useState(false);
   const [voucherView, setVoucherView] = useState<"summary" | "vouchers">("summary");
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const filteredResults = useMemo(() => {
     if (!searchTerm.trim()) return [];
