@@ -25,39 +25,6 @@ const Index = () => {
 
   const handlePrint = () => window.print();
 
-  // Batch print: show all certificates + per-grant vouchers for every school
-  if (batchPrint) {
-    return (
-      <>
-        <div className="no-print fixed top-4 right-4 z-50 flex gap-2">
-          <Button onClick={handlePrint} className="bg-primary text-primary-foreground gap-2">
-            <Printer className="h-4 w-4" /> Print All
-          </Button>
-          <Button variant="outline" onClick={() => setBatchPrint(false)} className="gap-2">
-            <X className="h-4 w-4" /> Back
-          </Button>
-        </div>
-        <div>
-          {grantsData.map((record) => {
-            const nonZero = record.grants.filter((g) => g.amount > 0);
-            return (
-              <div key={record.pfmsCode}>
-                <div className="print:break-after-page">
-                  <GrantReport record={record} />
-                </div>
-                {nonZero.map((grant, gIdx) => (
-                  <div key={`${record.pfmsCode}-${gIdx}`} className="print:break-after-page">
-                    <GrantVoucher record={record} grant={grant} serialNo={gIdx + 1} />
-                  </div>
-                ))}
-              </div>
-            );
-          })}
-        </div>
-      </>
-    );
-  }
-
   // Single record view
   if (selectedRecord) {
     const nonZero = selectedRecord.grants.filter((g) => g.amount > 0);
