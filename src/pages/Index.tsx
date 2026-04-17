@@ -2,13 +2,15 @@ import { useState, useMemo } from "react";
 import { grantsData, GrantRecord } from "@/data/grantsData";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, Printer, X, FileText } from "lucide-react";
+import { Search, Printer, X, FileText, Receipt } from "lucide-react";
 import { GrantReport } from "@/components/GrantReport";
+import { GrantVoucher } from "@/components/GrantVoucher";
 
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedRecord, setSelectedRecord] = useState<GrantRecord | null>(null);
   const [batchPrint, setBatchPrint] = useState(false);
+  const [voucherView, setVoucherView] = useState<"summary" | "vouchers">("summary");
 
   const filteredResults = useMemo(() => {
     if (!searchTerm.trim()) return [];
@@ -23,7 +25,7 @@ const Index = () => {
 
   const handlePrint = () => window.print();
 
-  // Batch print: show all certificates
+  // Batch print: show all certificates + per-grant vouchers for every school
   if (batchPrint) {
     return (
       <>
@@ -36,11 +38,21 @@ const Index = () => {
           </Button>
         </div>
         <div>
-          {grantsData.map((record) => (
-            <div key={record.pfmsCode} className="print:break-after-page">
-              <GrantReport record={record} />
-            </div>
-          ))}
+          {grantsData.map((record) => {
+            const nonZero = record.grants.filter((g) => g.amount > 0);
+            return (
+              <div key={record.pfmsCode}>
+                <div className="print:break-after-page">
+                  <GrantReport record={record} />
+                </div>
+                {nonZero.map((grant, gIdx) => (
+                  <div key={`${record.pfmsCode}-${gIdx}`} className="print:break-after-page">
+                    <GrantVoucher record={record} grant={grant} serialNo={gIdx + 1} />
+                  </div>
+                ))}
+              </div>
+            );
+          })}
         </div>
       </>
     );
@@ -48,17 +60,42 @@ const Index = () => {
 
   // Single record view
   if (selectedRecord) {
+    const nonZero = selectedRecord.grants.filter((g) => g.amount > 0);
     return (
       <>
-        <div className="no-print fixed top-4 right-4 z-50 flex gap-2">
+        <div className="no-print fixed top-4 right-4 z-50 flex gap-2 flex-wrap justify-end">
+          <Button
+            variant={voucherView === "summary" ? "default" : "outline"}
+            onClick={() => setVoucherView("summary")}
+            className="gap-2"
+          >
+            <FileText className="h-4 w-4" /> Summary
+          </Button>
+          <Button
+            variant={voucherView === "vouchers" ? "default" : "outline"}
+            onClick={() => setVoucherView("vouchers")}
+            className="gap-2"
+          >
+            <Receipt className="h-4 w-4" /> Vouchers ({nonZero.length})
+          </Button>
           <Button onClick={handlePrint} className="bg-primary text-primary-foreground gap-2">
             <Printer className="h-4 w-4" /> Print
           </Button>
-          <Button variant="outline" onClick={() => setSelectedRecord(null)} className="gap-2">
+          <Button variant="outline" onClick={() => { setSelectedRecord(null); setVoucherView("summary"); }} className="gap-2">
             <X className="h-4 w-4" /> Back
           </Button>
         </div>
-        <GrantReport record={selectedRecord} />
+        {voucherView === "summary" ? (
+          <GrantReport record={selectedRecord} />
+        ) : (
+          <div>
+            {nonZero.map((grant, gIdx) => (
+              <div key={gIdx} className="print:break-after-page">
+                <GrantVoucher record={selectedRecord} grant={grant} serialNo={gIdx + 1} />
+              </div>
+            ))}
+          </div>
+        )}
       </>
     );
   }
