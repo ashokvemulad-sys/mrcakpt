@@ -183,7 +183,7 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
       </div>
 
       {/* Signatures */}
-      <div className="mt-auto pt-6 flex justify-between text-[10px]">
+      <div className="mt-6 flex justify-between text-[11px]">
         <div className="text-center">
           <div className="border-b border-foreground w-52 mb-1"></div>
           <p className="font-bold">Signature of the SMC Chairman / Sr. Teacher</p>
