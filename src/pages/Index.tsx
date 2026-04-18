@@ -2,9 +2,10 @@ import { useState, useMemo } from "react";
 import { grantsData, GrantRecord } from "@/data/grantsData";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, Printer, X, FileText, Receipt } from "lucide-react";
+import { Search, Printer, X, FileText, Receipt, ScrollText } from "lucide-react";
 import { GrantReport } from "@/components/GrantReport";
 import { GrantVoucher } from "@/components/GrantVoucher";
+import { SmcResolution } from "@/components/SmcResolution";
 
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState("");
