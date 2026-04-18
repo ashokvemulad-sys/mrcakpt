@@ -30,18 +30,20 @@ const Index = () => {
     const nonZero = selectedRecord.grants.filter((g) => g.amount > 0);
     return (
       <>
-        {voucherView === "summary" ? (
-          <GrantReport record={selectedRecord} />
-        ) : (
-          <div>
-            {nonZero.map((grant, gIdx) => (
-              <div key={gIdx} className="print:break-after-page">
-                <GrantVoucher record={selectedRecord} grant={grant} serialNo={gIdx + 1} />
-              </div>
-            ))}
-          </div>
-        )}
-        <div className="no-print flex gap-2 flex-wrap justify-center py-6 border-t border-border bg-background">
+        <div className="pb-24">
+          {voucherView === "summary" ? (
+            <GrantReport record={selectedRecord} />
+          ) : (
+            <div>
+              {nonZero.map((grant, gIdx) => (
+                <div key={gIdx} className="print:break-after-page">
+                  <GrantVoucher record={selectedRecord} grant={grant} serialNo={gIdx + 1} />
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+        <div className="no-print fixed bottom-0 left-0 right-0 flex gap-2 flex-wrap justify-center py-4 border-t border-border bg-background/95 backdrop-blur shadow-lg z-50">
           <Button
             variant={voucherView === "summary" ? "default" : "outline"}
             onClick={() => setVoucherView("summary")}
