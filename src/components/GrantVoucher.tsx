@@ -51,7 +51,7 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
           className="h-16 w-16 object-contain shrink-0"
         />
         <div className="flex-1 text-center">
-          <h1 className="text-lg font-bold underline tracking-wide">UTILIZATION CERTIFICATE</h1>
+          <h1 className="text-xl font-extrabold underline tracking-wider uppercase">UTILIZATION CERTIFICATE</h1>
           <p className="text-xs mt-0.5">Financial Year: {record.financialYear}</p>
         </div>
         <img
