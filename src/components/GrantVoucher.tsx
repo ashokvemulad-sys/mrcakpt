@@ -51,7 +51,7 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
           className="h-16 w-16 object-contain shrink-0"
         />
         <div className="flex-1 text-center">
-          <h1 className="text-lg font-bold underline tracking-wide">UTILIZATION CERTIFICATE</h1>
+          <h1 className="text-xl font-extrabold underline tracking-wider uppercase">UTILIZATION CERTIFICATE</h1>
           <p className="text-xs mt-0.5">Financial Year: {record.financialYear}</p>
         </div>
         <img
@@ -75,13 +75,13 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
       {/* Grant Details Table */}
       <table className="w-full border-collapse mt-2 text-[12px]">
         <thead>
-          <tr className="bg-voucher-header text-voucher-header-foreground">
-            <th className="p-1.5 border border-voucher-header w-10">S.No</th>
-            <th className="p-1.5 border border-voucher-header text-left">Grant</th>
-            <th className="p-1.5 border border-voucher-header w-24">Credited Date</th>
-            <th className="p-1.5 border border-voucher-header w-24">Amount Released</th>
-            <th className="p-1.5 border border-voucher-header w-28">Expenditure Incurred</th>
-            <th className="p-1.5 border border-voucher-header w-24">Balance If any</th>
+          <tr className="bg-voucher-header text-voucher-header-foreground font-extrabold uppercase tracking-wide text-[12.5px]">
+            <th className="p-2 border border-voucher-header w-10 font-extrabold">S.No</th>
+            <th className="p-2 border border-voucher-header text-left font-extrabold">Grant</th>
+            <th className="p-2 border border-voucher-header w-24 font-extrabold">Credited Date</th>
+            <th className="p-2 border border-voucher-header w-24 font-extrabold">Amount Released</th>
+            <th className="p-2 border border-voucher-header w-28 font-extrabold">Expenditure Incurred</th>
+            <th className="p-2 border border-voucher-header w-24 font-extrabold">Balance If any</th>
           </tr>
         </thead>
         <tbody>
@@ -103,7 +103,7 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
       </p>
 
       {/* Expenditure Statement */}
-      <h2 className="text-center font-bold underline mt-4 text-sm">EXPENDITURE STATEMENT</h2>
+      <h2 className="text-center font-extrabold underline mt-4 text-base uppercase tracking-wider">EXPENDITURE STATEMENT</h2>
       <p className="mt-1 text-justify leading-relaxed">
         Statement showing the particulars of the amounts received from District Educational Officer, SIDDIPET and
         their details of expenditure.
@@ -111,11 +111,11 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
 
       <table className="w-full border-collapse mt-2 text-[12px]">
         <thead>
-          <tr className="bg-voucher-header text-voucher-header-foreground">
-            <th className="p-1.5 border border-voucher-header w-10">S.No</th>
-            <th className="p-1.5 border border-voucher-header text-left w-[28%]">Credit Particulars</th>
-            <th className="p-1.5 border border-voucher-header text-left w-[22%]">PPA Description</th>
-            <th className="p-1.5 border border-voucher-header text-left">Sub-Voucher No. &amp; Date with Details of Expenditure</th>
+          <tr className="bg-voucher-header text-voucher-header-foreground font-extrabold uppercase tracking-wide text-[12.5px]">
+            <th className="p-2 border border-voucher-header w-10 font-extrabold">S.No</th>
+            <th className="p-2 border border-voucher-header text-left w-[28%] font-extrabold">Credit Particulars</th>
+            <th className="p-2 border border-voucher-header text-left w-[22%] font-extrabold">PPA Description</th>
+            <th className="p-2 border border-voucher-header text-left font-extrabold">Sub-Voucher No. &amp; Date with Details of Expenditure</th>
           </tr>
         </thead>
         <tbody>
@@ -183,7 +183,7 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
       </div>
 
       {/* Signatures */}
-      <div className="mt-6 flex justify-between text-[11px]">
+      <div className="mt-16 flex justify-between text-[11px]">
         <div className="text-center">
           <div className="border-b border-foreground w-52 mb-1"></div>
           <p className="font-bold">Signature of the SMC Chairman / Sr. Teacher</p>
