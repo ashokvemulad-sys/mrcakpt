@@ -1,0 +1,126 @@
+import { GrantRecord, Grant } from "@/data/grantsData";
+
+interface SmcResolutionProps {
+  record: GrantRecord;
+  grant: Grant;
+  serialNo?: number;
+}
+
+export const SmcResolution = ({ record, grant, serialNo = 1 }: SmcResolutionProps) => {
+  const editableInline =
+    "inline-block min-w-[120px] border-b border-foreground/60 px-1 outline-none focus:bg-accent/30 print:bg-transparent";
+  const editableCell =
+    "p-1.5 border border-border outline-none focus:bg-accent/30 print:bg-transparent min-h-[28px]";
+  const editableLine =
+    "block w-full border-b border-foreground/60 px-1 py-0.5 outline-none focus:bg-accent/30 print:bg-transparent min-h-[20px]";
+
+  return (
+    <div
+      className="max-w-[210mm] mx-auto bg-white p-[10mm] h-[297mm] print:p-[10mm] print:max-w-none print:h-[297mm] border-2 border-voucher-header flex flex-col overflow-hidden text-[11px] text-foreground"
+      style={{ fontFamily: "'Georgia', 'Cambria', 'Times New Roman', serif" }}
+    >
+      {/* Header */}
+      <div className="flex items-center justify-between gap-4 border-b border-border pb-2">
+        <img
+          src="https://www.samagrashiksha.telangana.gov.in/SamagraShiksha/images/logo.png"
+          alt="Samagra Shiksha Logo"
+          className="h-16 w-16 object-contain shrink-0"
+        />
+        <div className="flex-1 text-center">
+          <h1 className="text-lg font-bold underline tracking-wide">SMC / AAPC RESOLUTION</h1>
+          <p className="text-xs mt-0.5">Financial Year: {record.financialYear}</p>
+        </div>
+        <img
+          src="https://pfms.nic.in/SitePages/images/logo.png"
+          alt="PFMS Logo"
+          className="h-16 w-16 object-contain shrink-0"
+        />
+      </div>
+
+      {/* School identifier line */}
+      <p className="mt-3 text-center font-semibold">
+        {record.smcName}, U-DISE: {record.uDise}, Mdl: AKKANNAPETA, Dist: SIDDIPET
+      </p>
+
+      {/* Lr.No / Date */}
+      <div className="mt-2 flex justify-between text-[11px]">
+        <span>
+          Lr.No: <span className={editableInline} contentEditable suppressContentEditableWarning></span>
+        </span>
+        <span>
+          Date: <span className={editableInline} contentEditable suppressContentEditableWarning></span>
+        </span>
+      </div>
+
+      {/* Body paragraph */}
+      <p className="mt-3 leading-relaxed text-justify">
+        Today i.e. date{" "}
+        <span className={editableInline} contentEditable suppressContentEditableWarning></span> day at 10:00 AM a
+        meeting was arranged at the school <span className="font-semibold">{record.smcName}</span>, with U-DISE:{" "}
+        <span className="font-semibold">{record.uDise}</span> of Akkannapeta Mandal, Siddipet District by the
+        SMC/AAPC members with the teachers under the Chairmanship of the School Headmaster{" "}
+        <span className="font-semibold">{record.hmName || "____________"}</span>, SMC/AAPC Chairman Sri/Smt:{" "}
+        <span className={editableInline} contentEditable suppressContentEditableWarning></span>.
+      </p>
+
+      <p className="mt-2 leading-relaxed text-justify">
+        At this meeting the prominent grants released to the school were explained to the SMC/AAPC members — how
+        much grant has been credited and how it has been spent. All SMC/AAPC members of the committee unanimously
+        agreed and passed the resolution for the utilization of the grant mentioned below:
+      </p>
+
+      {/* Grant table */}
+      <table className="w-full border-collapse mt-3 text-[11px]">
+        <thead>
+          <tr className="bg-voucher-header text-voucher-header-foreground">
+            <th className="p-1.5 border border-voucher-header w-10">S.No</th>
+            <th className="p-1.5 border border-voucher-header text-left">Details of the Grant</th>
+            <th className="p-1.5 border border-voucher-header w-28">Credited Amount</th>
+            <th className="p-1.5 border border-voucher-header w-24">Credited Date</th>
+            <th className="p-1.5 border border-voucher-header text-left w-[28%]">Purpose of Expenditure</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td className="p-1.5 border border-border text-center">{serialNo}</td>
+            <td className="p-1.5 border border-border">{grant.name}</td>
+            <td className="p-1.5 border border-border text-right">
+              {grant.amount.toLocaleString("en-IN")}
+            </td>
+            <td className="p-1.5 border border-border text-center">{grant.date}</td>
+            <td className={editableCell} contentEditable suppressContentEditableWarning></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p className="mt-3 leading-relaxed text-justify">
+        This Committee agreed that the amounts released by Samagra Shiksha, Siddipet were utilized with regard to
+        School Expenses properly as per the guidelines issued by Samagra Shiksha, Telangana from time to time. In
+        our observation it is found that the grant has been properly utilized.
+      </p>
+
+      {/* Members sign */}
+      <p className="mt-3 font-bold">SMC / AAPC Members Sign</p>
+      <div className="grid grid-cols-2 gap-x-6 gap-y-1 mt-1 text-[11px]">
+        <div>1. SMC Chairman: <span className={editableInline} contentEditable suppressContentEditableWarning></span></div>
+        <div>2. SMC Vice Chairman: <span className={editableInline} contentEditable suppressContentEditableWarning></span></div>
+        <div>3. Teacher: <span className={editableInline} contentEditable suppressContentEditableWarning></span></div>
+        <div>4. Teacher: <span className={editableInline} contentEditable suppressContentEditableWarning></span></div>
+        {Array.from({ length: 6 }).map((_, i) => (
+          <div key={i}>
+            {5 + i}. <span className={editableInline} contentEditable suppressContentEditableWarning></span>
+          </div>
+        ))}
+      </div>
+
+      {/* Headmaster signature */}
+      <div className="mt-auto pt-6 flex justify-end text-[10px]">
+        <div className="text-center">
+          <div className="border-b border-foreground w-52 mb-1"></div>
+          <p className="font-bold">Headmaster</p>
+          <p className="font-semibold">{record.hmName || ""}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
