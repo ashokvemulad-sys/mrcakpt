@@ -10,7 +10,7 @@ import { SmcResolution } from "@/components/SmcResolution";
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedRecord, setSelectedRecord] = useState<GrantRecord | null>(null);
-  const [voucherView, setVoucherView] = useState<"summary" | "vouchers">("summary");
+  const [voucherView, setVoucherView] = useState<"summary" | "vouchers" | "resolutions">("summary");
   const [searchOpen, setSearchOpen] = useState(false);
 
   const filteredResults = useMemo(() => {
