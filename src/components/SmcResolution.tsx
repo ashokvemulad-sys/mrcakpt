@@ -100,14 +100,14 @@ export const SmcResolution = ({ record, grant, serialNo = 1 }: SmcResolutionProp
       </p>
 
       {/* Members sign */}
-      <p className="mt-3 font-bold">SMC / AAPC Members Sign</p>
-      <div className="grid grid-cols-2 gap-x-6 gap-y-1 mt-1 text-[11px]">
-        <div>1. SMC Chairman: <span className={editableInline} contentEditable suppressContentEditableWarning></span></div>
-        <div>2. SMC Vice Chairman: <span className={editableInline} contentEditable suppressContentEditableWarning></span></div>
-        <div>3. Teacher: <span className={editableInline} contentEditable suppressContentEditableWarning></span></div>
-        <div>4. Teacher: <span className={editableInline} contentEditable suppressContentEditableWarning></span></div>
+      <p className="mt-4 font-bold">SMC / AAPC Members Sign</p>
+      <div className="grid grid-cols-2 gap-x-8 gap-y-7 mt-4 text-[12px]">
+        <div className="pb-1 border-b border-foreground/40">1. SMC Chairman: <span className={editableInline} contentEditable suppressContentEditableWarning></span></div>
+        <div className="pb-1 border-b border-foreground/40">2. SMC Vice Chairman: <span className={editableInline} contentEditable suppressContentEditableWarning></span></div>
+        <div className="pb-1 border-b border-foreground/40">3. Teacher: <span className={editableInline} contentEditable suppressContentEditableWarning></span></div>
+        <div className="pb-1 border-b border-foreground/40">4. Teacher: <span className={editableInline} contentEditable suppressContentEditableWarning></span></div>
         {Array.from({ length: 6 }).map((_, i) => (
-          <div key={i}>
+          <div key={i} className="pb-1 border-b border-foreground/40">
             {5 + i}. <span className={editableInline} contentEditable suppressContentEditableWarning></span>
           </div>
         ))}
