@@ -77,7 +77,7 @@ export const SmcResolution = ({ record, grant, serialNo = 1 }: SmcResolutionProp
             <th className="p-1.5 border border-voucher-header text-left">Details of the Grant</th>
             <th className="p-1.5 border border-voucher-header w-28">Credited Amount</th>
             <th className="p-1.5 border border-voucher-header w-24">Credited Date</th>
-            <th className="p-1.5 border border-voucher-header text-left w-[28%]">Purpose of Expenditure</th>
+            <th className="p-1.5 border border-voucher-header text-left w-[42%]">Purpose of Expenditure</th>
           </tr>
         </thead>
         <tbody>
