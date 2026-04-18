@@ -155,7 +155,7 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
             <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
             <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
           </tr>
-          <tr className="bg-report-total font-bold">
+          <tr className="bg-voucher-total font-bold">
             <td colSpan={2} className="p-1.5 border border-border text-right">TOTAL</td>
             <td className={editableCellClass + " text-right"} contentEditable suppressContentEditableWarning></td>
             <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
