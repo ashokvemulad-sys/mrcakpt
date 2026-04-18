@@ -42,7 +42,7 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
     "p-1.5 border border-border outline-none focus:bg-accent/30 print:bg-transparent min-h-[28px]";
 
   return (
-    <div className="voucher-page max-w-[210mm] mx-auto bg-white p-[8mm] h-[297mm] print:p-[8mm] print:max-w-none print:h-[297mm] border-2 border-voucher-header flex flex-col overflow-hidden text-[10.5px] text-foreground" style={{ fontFamily: "'Georgia', 'Cambria', 'Times New Roman', serif" }}>
+    <div className="voucher-page max-w-[210mm] mx-auto bg-white p-[8mm] h-[297mm] print:p-[8mm] print:max-w-none print:h-[297mm] border-2 border-voucher-header flex flex-col overflow-hidden text-[12.5px] leading-relaxed text-foreground" style={{ fontFamily: "'Calibri', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" }}>
       {/* Header */}
       <div className="flex items-center justify-between gap-4 border-b border-border pb-2">
         <img
