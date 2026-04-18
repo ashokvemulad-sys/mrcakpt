@@ -16,8 +16,8 @@ export const SmcResolution = ({ record, grant, serialNo = 1 }: SmcResolutionProp
 
   return (
     <div
-      className="max-w-[210mm] mx-auto bg-white p-[10mm] h-[297mm] print:p-[10mm] print:max-w-none print:h-[297mm] border-2 border-voucher-header flex flex-col overflow-hidden text-[11px] text-foreground"
-      style={{ fontFamily: "'Georgia', 'Cambria', 'Times New Roman', serif" }}
+      className="max-w-[210mm] mx-auto bg-white p-[10mm] h-[297mm] print:p-[10mm] print:max-w-none print:h-[297mm] border-2 border-voucher-header flex flex-col overflow-hidden text-[13px] leading-relaxed text-foreground"
+      style={{ fontFamily: "'Trebuchet MS', 'Verdana', 'Segoe UI', sans-serif" }}
     >
       {/* Header */}
       <div className="flex items-center justify-between gap-4 border-b border-border pb-2">
