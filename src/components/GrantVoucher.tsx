@@ -73,7 +73,7 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
       <p className="mt-2">The details are mentioned hereunder.</p>
 
       {/* Grant Details Table */}
-      <table className="w-full border-collapse mt-2 text-[10.5px]">
+      <table className="w-full border-collapse mt-2 text-[12px]">
         <thead>
           <tr className="bg-voucher-header text-voucher-header-foreground">
             <th className="p-1.5 border border-voucher-header w-10">S.No</th>
