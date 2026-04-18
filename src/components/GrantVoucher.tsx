@@ -103,7 +103,7 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
       </p>
 
       {/* Expenditure Statement */}
-      <h2 className="text-center font-bold underline mt-4 text-sm">EXPENDITURE STATEMENT</h2>
+      <h2 className="text-center font-extrabold underline mt-4 text-base uppercase tracking-wider">EXPENDITURE STATEMENT</h2>
       <p className="mt-1 text-justify leading-relaxed">
         Statement showing the particulars of the amounts received from District Educational Officer, SIDDIPET and
         their details of expenditure.
