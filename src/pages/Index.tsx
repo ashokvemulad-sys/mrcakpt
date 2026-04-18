@@ -34,11 +34,19 @@ const Index = () => {
         <div className="pb-24">
           {voucherView === "summary" ? (
             <GrantReport record={selectedRecord} />
-          ) : (
+          ) : voucherView === "vouchers" ? (
             <div>
               {nonZero.map((grant, gIdx) => (
                 <div key={gIdx} className="print:break-after-page">
                   <GrantVoucher record={selectedRecord} grant={grant} serialNo={gIdx + 1} />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div>
+              {nonZero.map((grant, gIdx) => (
+                <div key={gIdx} className="print:break-after-page">
+                  <SmcResolution record={selectedRecord} grant={grant} serialNo={gIdx + 1} />
                 </div>
               ))}
             </div>
@@ -58,6 +66,13 @@ const Index = () => {
             className="gap-2"
           >
             <Receipt className="h-4 w-4" /> Vouchers ({nonZero.length})
+          </Button>
+          <Button
+            variant={voucherView === "resolutions" ? "default" : "outline"}
+            onClick={() => setVoucherView("resolutions")}
+            className="gap-2"
+          >
+            <ScrollText className="h-4 w-4" /> Resolutions ({nonZero.length})
           </Button>
           <Button onClick={handlePrint} className="bg-primary text-primary-foreground gap-2">
             <Printer className="h-4 w-4" /> Print
