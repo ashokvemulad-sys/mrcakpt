@@ -42,7 +42,7 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
     "p-1.5 border border-border outline-none focus:bg-accent/30 print:bg-transparent min-h-[28px]";
 
   return (
-    <div className="max-w-[210mm] mx-auto bg-white p-[10mm] h-[297mm] print:p-[10mm] print:max-w-none print:h-[297mm] border-2 border-[hsl(25,50%,35%)] flex flex-col overflow-hidden text-[11px] text-foreground">
+    <div className="voucher-page max-w-[210mm] mx-auto bg-white p-[8mm] h-[297mm] print:p-[8mm] print:max-w-none print:h-[297mm] border-2 border-voucher-header flex flex-col overflow-hidden text-[10.5px] text-foreground" style={{ fontFamily: "'Georgia', 'Cambria', 'Times New Roman', serif" }}>
       {/* Header */}
       <div className="flex items-center justify-between gap-4 border-b border-border pb-2">
         <img
@@ -73,15 +73,15 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
       <p className="mt-2">The details are mentioned hereunder.</p>
 
       {/* Grant Details Table */}
-      <table className="w-full border-collapse mt-2 text-[11px]">
+      <table className="w-full border-collapse mt-2 text-[10.5px]">
         <thead>
-          <tr className="bg-report-header text-report-header-foreground">
-            <th className="p-1.5 border border-report-header w-10">S.No</th>
-            <th className="p-1.5 border border-report-header text-left">Grant</th>
-            <th className="p-1.5 border border-report-header w-24">Credited Date</th>
-            <th className="p-1.5 border border-report-header w-24">Amount Released</th>
-            <th className="p-1.5 border border-report-header w-28">Expenditure Incurred</th>
-            <th className="p-1.5 border border-report-header w-24">Balance If any</th>
+          <tr className="bg-voucher-header text-voucher-header-foreground">
+            <th className="p-1.5 border border-voucher-header w-10">S.No</th>
+            <th className="p-1.5 border border-voucher-header text-left">Grant</th>
+            <th className="p-1.5 border border-voucher-header w-24">Credited Date</th>
+            <th className="p-1.5 border border-voucher-header w-24">Amount Released</th>
+            <th className="p-1.5 border border-voucher-header w-28">Expenditure Incurred</th>
+            <th className="p-1.5 border border-voucher-header w-24">Balance If any</th>
           </tr>
         </thead>
         <tbody>
@@ -109,13 +109,13 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
         their details of expenditure.
       </p>
 
-      <table className="w-full border-collapse mt-2 text-[11px]">
+      <table className="w-full border-collapse mt-2 text-[10.5px]">
         <thead>
-          <tr className="bg-report-header text-report-header-foreground">
-            <th className="p-1.5 border border-report-header w-10">S.No</th>
-            <th className="p-1.5 border border-report-header text-left w-[28%]">Credit Particulars</th>
-            <th className="p-1.5 border border-report-header text-left w-[22%]">PPA Description</th>
-            <th className="p-1.5 border border-report-header text-left">Sub-Voucher No. &amp; Date with Details of Expenditure</th>
+          <tr className="bg-voucher-header text-voucher-header-foreground">
+            <th className="p-1.5 border border-voucher-header w-10">S.No</th>
+            <th className="p-1.5 border border-voucher-header text-left w-[28%]">Credit Particulars</th>
+            <th className="p-1.5 border border-voucher-header text-left w-[22%]">PPA Description</th>
+            <th className="p-1.5 border border-voucher-header text-left">Sub-Voucher No. &amp; Date with Details of Expenditure</th>
           </tr>
         </thead>
         <tbody>
@@ -155,7 +155,7 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
             <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
             <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
           </tr>
-          <tr className="bg-report-total font-bold">
+          <tr className="bg-voucher-total font-bold">
             <td colSpan={2} className="p-1.5 border border-border text-right">TOTAL</td>
             <td className={editableCellClass + " text-right"} contentEditable suppressContentEditableWarning></td>
             <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>

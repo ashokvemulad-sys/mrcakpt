@@ -37,6 +37,9 @@
     --report-header-foreground: 40 80% 95%;
     --report-stripe: 40 40% 95%;
     --report-total: 40 50% 90%;
+    --voucher-header: 270 60% 35%;
+    --voucher-header-foreground: 0 0% 100%;
+    --voucher-total: 270 40% 92%;
     --success: 142 70% 40%;
     --success-foreground: 0 0% 100%;
   }

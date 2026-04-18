@@ -49,6 +49,11 @@ export default {
           stripe: "hsl(var(--report-stripe))",
           total: "hsl(var(--report-total))",
         },
+        voucher: {
+          header: "hsl(var(--voucher-header))",
+          "header-foreground": "hsl(var(--voucher-header-foreground))",
+          total: "hsl(var(--voucher-total))",
+        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
