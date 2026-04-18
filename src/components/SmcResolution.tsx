@@ -114,7 +114,7 @@ export const SmcResolution = ({ record, grant, serialNo = 1 }: SmcResolutionProp
       </div>
 
       {/* Headmaster signature */}
-      <div className="mt-6 flex justify-end text-[12px]">
+      <div className="mt-16 flex justify-end text-[12px]">
         <div className="text-center">
           <div className="border-b border-foreground w-52 mb-1"></div>
           <p className="font-bold">Headmaster</p>
