@@ -42,7 +42,7 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
     "p-1.5 border border-border outline-none focus:bg-accent/30 print:bg-transparent min-h-[28px]";
 
   return (
-    <div className="voucher-page max-w-[210mm] mx-auto bg-white p-[8mm] h-[297mm] print:p-[8mm] print:max-w-none print:h-[297mm] border-2 border-voucher-header flex flex-col overflow-hidden text-[10.5px] text-foreground" style={{ fontFamily: "'Georgia', 'Cambria', 'Times New Roman', serif" }}>
+    <div className="voucher-page max-w-[210mm] mx-auto bg-white p-[8mm] h-[297mm] print:p-[8mm] print:max-w-none print:h-[297mm] border-2 border-voucher-header flex flex-col overflow-hidden text-[12.5px] leading-relaxed text-foreground" style={{ fontFamily: "'Calibri', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" }}>
       {/* Header */}
       <div className="flex items-center justify-between gap-4 border-b border-border pb-2">
         <img
@@ -73,7 +73,7 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
       <p className="mt-2">The details are mentioned hereunder.</p>
 
       {/* Grant Details Table */}
-      <table className="w-full border-collapse mt-2 text-[10.5px]">
+      <table className="w-full border-collapse mt-2 text-[12px]">
         <thead>
           <tr className="bg-voucher-header text-voucher-header-foreground">
             <th className="p-1.5 border border-voucher-header w-10">S.No</th>
@@ -109,7 +109,7 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
         their details of expenditure.
       </p>
 
-      <table className="w-full border-collapse mt-2 text-[10.5px]">
+      <table className="w-full border-collapse mt-2 text-[12px]">
         <thead>
           <tr className="bg-voucher-header text-voucher-header-foreground">
             <th className="p-1.5 border border-voucher-header w-10">S.No</th>
@@ -183,7 +183,7 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
       </div>
 
       {/* Signatures */}
-      <div className="mt-auto pt-6 flex justify-between text-[10px]">
+      <div className="mt-6 flex justify-between text-[11px]">
         <div className="text-center">
           <div className="border-b border-foreground w-52 mb-1"></div>
           <p className="font-bold">Signature of the SMC Chairman / Sr. Teacher</p>
