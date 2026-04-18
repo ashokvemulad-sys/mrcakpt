@@ -73,15 +73,15 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
       <p className="mt-2">The details are mentioned hereunder.</p>
 
       {/* Grant Details Table */}
-      <table className="w-full border-collapse mt-2 text-[11px]">
+      <table className="w-full border-collapse mt-2 text-[10.5px]">
         <thead>
-          <tr className="bg-report-header text-report-header-foreground">
-            <th className="p-1.5 border border-report-header w-10">S.No</th>
-            <th className="p-1.5 border border-report-header text-left">Grant</th>
-            <th className="p-1.5 border border-report-header w-24">Credited Date</th>
-            <th className="p-1.5 border border-report-header w-24">Amount Released</th>
-            <th className="p-1.5 border border-report-header w-28">Expenditure Incurred</th>
-            <th className="p-1.5 border border-report-header w-24">Balance If any</th>
+          <tr className="bg-voucher-header text-voucher-header-foreground">
+            <th className="p-1.5 border border-voucher-header w-10">S.No</th>
+            <th className="p-1.5 border border-voucher-header text-left">Grant</th>
+            <th className="p-1.5 border border-voucher-header w-24">Credited Date</th>
+            <th className="p-1.5 border border-voucher-header w-24">Amount Released</th>
+            <th className="p-1.5 border border-voucher-header w-28">Expenditure Incurred</th>
+            <th className="p-1.5 border border-voucher-header w-24">Balance If any</th>
           </tr>
         </thead>
         <tbody>
