@@ -109,13 +109,13 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
         their details of expenditure.
       </p>
 
-      <table className="w-full border-collapse mt-2 text-[11px]">
+      <table className="w-full border-collapse mt-2 text-[10.5px]">
         <thead>
-          <tr className="bg-report-header text-report-header-foreground">
-            <th className="p-1.5 border border-report-header w-10">S.No</th>
-            <th className="p-1.5 border border-report-header text-left w-[28%]">Credit Particulars</th>
-            <th className="p-1.5 border border-report-header text-left w-[22%]">PPA Description</th>
-            <th className="p-1.5 border border-report-header text-left">Sub-Voucher No. &amp; Date with Details of Expenditure</th>
+          <tr className="bg-voucher-header text-voucher-header-foreground">
+            <th className="p-1.5 border border-voucher-header w-10">S.No</th>
+            <th className="p-1.5 border border-voucher-header text-left w-[28%]">Credit Particulars</th>
+            <th className="p-1.5 border border-voucher-header text-left w-[22%]">PPA Description</th>
+            <th className="p-1.5 border border-voucher-header text-left">Sub-Voucher No. &amp; Date with Details of Expenditure</th>
           </tr>
         </thead>
         <tbody>
