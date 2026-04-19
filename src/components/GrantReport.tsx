@@ -76,45 +76,45 @@ export const GrantReport = ({ record }: GrantReportProps) => {
       </div>
 
       {/* Grants Table */}
-      <table className="w-full border-collapse text-xs mt-2">
+      <table className="w-full border border-black border-collapse text-xs mt-2">
         <thead>
           <tr className="bg-report-header text-report-header-foreground">
-            <th className="p-1.5 text-left font-semibold border border-report-header w-8">S.No</th>
-            <th className="p-1.5 text-left font-semibold border border-report-header">Grant Name</th>
-            <th className="p-1.5 text-center font-semibold border border-report-header w-24">Credited Date</th>
-            <th className="p-1.5 text-right font-semibold border border-report-header w-24">Credited (₹)</th>
-            <th className="p-1.5 text-right font-semibold border border-report-header w-24">Utilized (₹)</th>
-            <th className="p-1.5 text-right font-semibold border border-report-header w-24">Balance (₹)</th>
+            <th className="p-1.5 text-left font-semibold border border-black w-8">S.No</th>
+            <th className="p-1.5 text-left font-semibold border border-black">Grant Name</th>
+            <th className="p-1.5 text-center font-semibold border border-black w-24">Credited Date</th>
+            <th className="p-1.5 text-right font-semibold border border-black w-24">Credited (₹)</th>
+            <th className="p-1.5 text-right font-semibold border border-black w-24">Utilized (₹)</th>
+            <th className="p-1.5 text-right font-semibold border border-black w-24">Balance (₹)</th>
           </tr>
         </thead>
         <tbody>
           {nonZeroGrants.length > 0 ? (
             nonZeroGrants.map((grant, idx) => (
               <tr key={idx} className={idx % 2 === 0 ? "bg-card" : "bg-report-stripe"}>
-                <td className="p-1.5 border border-border text-center">{idx + 1}</td>
-                <td className="p-1.5 border border-border">{grant.name}</td>
-                <td className="p-1.5 border border-border text-center">{grant.date}</td>
-                <td className="p-1.5 border border-border text-right font-medium">
+                <td className="p-1.5 border border-black text-center">{idx + 1}</td>
+                <td className="p-1.5 border border-black">{grant.name}</td>
+                <td className="p-1.5 border border-black text-center">{grant.date}</td>
+                <td className="p-1.5 border border-black text-right font-medium">
                   {grant.amount.toLocaleString("en-IN")}
                 </td>
-                <td className="p-1 border border-border text-right">
+                <td className="p-1 border border-black text-right">
                   <input
                     type="number"
                     min={0}
                     max={grant.amount}
                     value={utilized[idx] ?? ""}
                     onChange={(e) => handleUtilizedChange(idx, e.target.value)}
-                    className="w-full text-right bg-transparent border border-border rounded px-1 py-0.5 text-xs focus:outline-none focus:ring-1 focus:ring-primary print:border-none print:ring-0"
+                    className="w-full text-right bg-transparent border border-black rounded px-1 py-0.5 text-xs font-bold text-black focus:outline-none focus:ring-1 focus:ring-primary print:border-none print:ring-0"
                   />
                 </td>
-                <td className="p-1.5 border border-border text-right font-medium">
+                <td className="p-1.5 border border-black text-right font-medium">
                   {getBalance(idx, grant.amount).toLocaleString("en-IN")}
                 </td>
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan={6} className="p-4 text-center text-muted-foreground border border-border">
+              <td colSpan={6} className="p-4 text-center text-muted-foreground border border-black">
                 No grants credited for this school
               </td>
             </tr>
@@ -123,14 +123,14 @@ export const GrantReport = ({ record }: GrantReportProps) => {
         {nonZeroGrants.length > 0 && (
           <tfoot>
             <tr className="bg-report-total font-bold">
-              <td colSpan={3} className="p-1.5 border border-border text-right">Grand Total</td>
-              <td className="p-1.5 border border-border text-right text-primary">
+              <td colSpan={3} className="p-1.5 border border-black text-right">Grand Total</td>
+              <td className="p-1.5 border border-black text-right text-primary">
                 ₹{record.grandTotal.toLocaleString("en-IN")}
               </td>
-              <td className="p-1.5 border border-border text-right">
+              <td className="p-1.5 border border-black text-right">
                 ₹{totalUtilized.toLocaleString("en-IN")}
               </td>
-              <td className="p-1.5 border border-border text-right">
+              <td className="p-1.5 border border-black text-right">
                 ₹{totalBalance.toLocaleString("en-IN")}
               </td>
             </tr>
