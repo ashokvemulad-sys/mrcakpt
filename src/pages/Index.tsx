@@ -130,4 +130,87 @@ const Index = () => {
   );
 };
 
+interface SelectedRecordViewProps {
+  storageKey: string;
+  record: GrantRecord;
+  nonZero: GrantRecord["grants"];
+  voucherView: "summary" | "vouchers" | "resolutions";
+  setVoucherView: (v: "summary" | "vouchers" | "resolutions") => void;
+  onBack: () => void;
+  onPrint: () => void;
+}
+
+const SelectedRecordView = ({
+  storageKey,
+  record,
+  nonZero,
+  voucherView,
+  setVoucherView,
+  onBack,
+  onPrint,
+}: SelectedRecordViewProps) => {
+  const { containerRef, save, reset } = useEditablePersist(storageKey);
+
+  return (
+    <>
+      <div className="pb-24" ref={containerRef}>
+        {voucherView === "summary" ? (
+          <GrantReport record={record} />
+        ) : voucherView === "vouchers" ? (
+          <div>
+            {nonZero.map((grant, gIdx) => (
+              <div key={gIdx} className="print:break-after-page">
+                <GrantVoucher record={record} grant={grant} serialNo={gIdx + 1} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div>
+            {nonZero.map((grant, gIdx) => (
+              <div key={gIdx} className="print:break-after-page">
+                <SmcResolution record={record} grant={grant} serialNo={gIdx + 1} />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      <div className="no-print fixed bottom-0 left-0 right-0 flex gap-2 flex-wrap justify-center py-4 border-t border-border bg-background/95 backdrop-blur shadow-lg z-50">
+        <Button
+          variant={voucherView === "summary" ? "default" : "outline"}
+          onClick={() => setVoucherView("summary")}
+          className="gap-2"
+        >
+          <FileText className="h-4 w-4" /> Summary
+        </Button>
+        <Button
+          variant={voucherView === "vouchers" ? "default" : "outline"}
+          onClick={() => setVoucherView("vouchers")}
+          className="gap-2"
+        >
+          <Receipt className="h-4 w-4" /> Vouchers ({nonZero.length})
+        </Button>
+        <Button
+          variant={voucherView === "resolutions" ? "default" : "outline"}
+          onClick={() => setVoucherView("resolutions")}
+          className="gap-2"
+        >
+          <ScrollText className="h-4 w-4" /> Resolutions ({nonZero.length})
+        </Button>
+        <Button onClick={save} className="bg-success text-success-foreground gap-2 hover:bg-success/90">
+          <Save className="h-4 w-4" /> Save
+        </Button>
+        <Button variant="outline" onClick={reset} className="gap-2">
+          <RotateCcw className="h-4 w-4" /> Reset
+        </Button>
+        <Button onClick={onPrint} className="bg-primary text-primary-foreground gap-2">
+          <Printer className="h-4 w-4" /> Print
+        </Button>
+        <Button variant="outline" onClick={onBack} className="gap-2">
+          <X className="h-4 w-4" /> Back
+        </Button>
+      </div>
+    </>
+  );
+};
+
 export default Index;
