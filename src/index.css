@@ -52,6 +52,17 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Bookman Old Style', 'URW Bookman L', 'Bookman', Georgia, serif;
+    font-variant-numeric: normal;
+  }
+  /* Render all digits in Times New Roman across the app */
+  body {
+    font-feature-settings: normal;
+  }
+}
+
+@layer utilities {
+  .num-tnr {
+    font-family: 'Times New Roman', Times, serif;
   }
 }
 
