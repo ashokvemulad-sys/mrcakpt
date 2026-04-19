@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Force all digits 0-9 (and common numeric punctuation) to render in Times New Roman
+   across the entire app while keeping the rest of the text in the body font. */
+@font-face {
+  font-family: 'AppNumerals';
+  src: local('Times New Roman'), local('TimesNewRomanPSMT'), local('Times');
+  unicode-range: U+0030-0039, U+002C, U+002E, U+0025, U+20B9, U+0024, U+002F, U+003A, U+002D, U+002B;
+}
+
 @layer base {
   :root {
     --background: 210 20% 98%;
@@ -51,7 +59,14 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Bookman Old Style', 'URW Bookman L', 'Bookman', Georgia, serif;
+    /* AppNumerals (Times New Roman) is listed first so digits resolve to it via unicode-range,
+       while letters fall through to Bookman Old Style. */
+    font-family: 'AppNumerals', 'Bookman Old Style', 'URW Bookman L', 'Bookman', Georgia, serif;
+  }
+
+@layer utilities {
+  .num-tnr {
+    font-family: 'Times New Roman', Times, serif;
   }
 }
 
