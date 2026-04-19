@@ -51,7 +51,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Bookman Old Style', 'URW Bookman L', 'Bookman', Georgia, serif;
   }
 }
 
