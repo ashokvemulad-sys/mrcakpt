@@ -44,7 +44,7 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
     "p-1.5 border border-black outline-none focus:bg-accent/30 print:bg-transparent min-h-[28px] font-bold text-black";
 
   return (
-    <div className="voucher-page max-w-[210mm] mx-auto bg-white p-[8mm] h-[297mm] print:p-[8mm] print:max-w-none print:h-[297mm] border-2 border-voucher-header flex flex-col overflow-hidden text-[12.5px] leading-relaxed text-foreground" style={{ fontFamily: "'Calibri', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" }}>
+    <div className="voucher-page max-w-[210mm] mx-auto bg-white p-[8mm] h-[297mm] print:p-[8mm] print:max-w-none print:h-[297mm] border-2 border-voucher-header flex flex-col overflow-hidden text-[12.5px] leading-relaxed text-foreground" style={{ fontFamily: "'Bookman Old Style', 'URW Bookman L', 'Bookman', Georgia, serif" }}>
       {/* Header */}
       <div className="border-b border-border pb-2">
         <div className="flex items-center justify-between gap-4">
