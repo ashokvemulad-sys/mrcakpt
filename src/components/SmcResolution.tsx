@@ -8,11 +8,11 @@ interface SmcResolutionProps {
 
 export const SmcResolution = ({ record, grant, serialNo = 1 }: SmcResolutionProps) => {
   const editableInline =
-    "inline-block min-w-[120px] border-b border-foreground/60 px-1 outline-none focus:bg-accent/30 print:bg-transparent";
+    "inline-block min-w-[120px] border-b border-black px-1 outline-none focus:bg-accent/30 print:bg-transparent font-bold text-black";
   const editableCell =
-    "p-1.5 border border-border outline-none focus:bg-accent/30 print:bg-transparent min-h-[28px]";
+    "p-1.5 border border-black outline-none focus:bg-accent/30 print:bg-transparent min-h-[28px] font-bold text-black";
   const editableLine =
-    "block w-full border-b border-foreground/60 px-1 py-0.5 outline-none focus:bg-accent/30 print:bg-transparent min-h-[20px]";
+    "block w-full border-b border-black px-1 py-0.5 outline-none focus:bg-accent/30 print:bg-transparent min-h-[20px] font-bold text-black";
 
   return (
     <div
@@ -70,24 +70,24 @@ export const SmcResolution = ({ record, grant, serialNo = 1 }: SmcResolutionProp
       </p>
 
       {/* Grant table */}
-      <table className="w-full border-collapse mt-3 text-[11px]">
+      <table className="w-full border border-black border-collapse mt-3 text-[11px]">
         <thead>
           <tr className="bg-voucher-header text-voucher-header-foreground">
-            <th className="p-1.5 border border-voucher-header w-10">S.No</th>
-            <th className="p-1.5 border border-voucher-header text-left">Details of the Grant</th>
-            <th className="p-1.5 border border-voucher-header w-28">Credited Amount</th>
-            <th className="p-1.5 border border-voucher-header w-24">Credited Date</th>
-            <th className="p-1.5 border border-voucher-header text-left w-[42%]">Purpose of Expenditure</th>
+            <th className="p-1.5 border border-black w-10">S.No</th>
+            <th className="p-1.5 border border-black text-left">Details of the Grant</th>
+            <th className="p-1.5 border border-black w-28">Credited Amount</th>
+            <th className="p-1.5 border border-black w-24">Credited Date</th>
+            <th className="p-1.5 border border-black text-left w-[42%]">Purpose of Expenditure</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td className="p-1.5 border border-border text-center">{serialNo}</td>
-            <td className="p-1.5 border border-border">{grant.name}</td>
-            <td className="p-1.5 border border-border text-right">
+            <td className="p-1.5 border border-black text-center">{serialNo}</td>
+            <td className="p-1.5 border border-black">{grant.name}</td>
+            <td className="p-1.5 border border-black text-right">
               {grant.amount.toLocaleString("en-IN")}
             </td>
-            <td className="p-1.5 border border-border text-center">{grant.date}</td>
+            <td className="p-1.5 border border-black text-center">{grant.date}</td>
             <td className={editableCell} contentEditable suppressContentEditableWarning></td>
           </tr>
         </tbody>
@@ -102,12 +102,12 @@ export const SmcResolution = ({ record, grant, serialNo = 1 }: SmcResolutionProp
       {/* Members sign */}
       <p className="mt-4 font-bold">SMC / AAPC Members Sign</p>
       <div className="grid grid-cols-2 gap-x-8 gap-y-7 mt-4 text-[12px]">
-        <div className="pb-1 border-b border-foreground/40">1. SMC Chairman: <span className={editableInline} contentEditable suppressContentEditableWarning></span></div>
-        <div className="pb-1 border-b border-foreground/40">2. SMC Vice Chairman: <span className={editableInline} contentEditable suppressContentEditableWarning></span></div>
-        <div className="pb-1 border-b border-foreground/40">3. Teacher: <span className={editableInline} contentEditable suppressContentEditableWarning></span></div>
-        <div className="pb-1 border-b border-foreground/40">4. Teacher: <span className={editableInline} contentEditable suppressContentEditableWarning></span></div>
+        <div className="pb-1">1. SMC Chairman: <span className={editableInline} contentEditable suppressContentEditableWarning></span></div>
+        <div className="pb-1">2. SMC Vice Chairman: <span className={editableInline} contentEditable suppressContentEditableWarning></span></div>
+        <div className="pb-1">3. Teacher: <span className={editableInline} contentEditable suppressContentEditableWarning></span></div>
+        <div className="pb-1">4. Teacher: <span className={editableInline} contentEditable suppressContentEditableWarning></span></div>
         {Array.from({ length: 6 }).map((_, i) => (
-          <div key={i} className="pb-1 border-b border-foreground/40">
+          <div key={i} className="pb-1">
             {5 + i}. <span className={editableInline} contentEditable suppressContentEditableWarning></span>
           </div>
         ))}

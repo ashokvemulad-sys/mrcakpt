@@ -39,7 +39,7 @@ const numberToWords = (num: number): string => {
 export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps) => {
   const amountWords = numberToWords(grant.amount) + " Only";
   const editableCellClass =
-    "p-1.5 border border-border outline-none focus:bg-accent/30 print:bg-transparent min-h-[28px]";
+    "p-1.5 border border-black outline-none focus:bg-accent/30 print:bg-transparent min-h-[28px] font-bold text-black";
 
   return (
     <div className="voucher-page max-w-[210mm] mx-auto bg-white p-[8mm] h-[297mm] print:p-[8mm] print:max-w-none print:h-[297mm] border-2 border-voucher-header flex flex-col overflow-hidden text-[12.5px] leading-relaxed text-foreground" style={{ fontFamily: "'Calibri', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" }}>
@@ -73,25 +73,25 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
       <p className="mt-2">The details are mentioned hereunder.</p>
 
       {/* Grant Details Table */}
-      <table className="w-full border-collapse mt-2 text-[12px]">
+      <table className="w-full border border-black border-collapse mt-2 text-[12px]">
         <thead>
           <tr className="bg-voucher-header text-voucher-header-foreground font-extrabold uppercase tracking-wide text-[12.5px]">
-            <th className="p-2 border border-voucher-header w-10 font-extrabold">S.No</th>
-            <th className="p-2 border border-voucher-header text-left font-extrabold">Grant</th>
-            <th className="p-2 border border-voucher-header w-24 font-extrabold">Credited Date</th>
-            <th className="p-2 border border-voucher-header w-24 font-extrabold">Amount Released</th>
-            <th className="p-2 border border-voucher-header w-28 font-extrabold">Expenditure Incurred</th>
-            <th className="p-2 border border-voucher-header w-24 font-extrabold">Balance If any</th>
+            <th className="p-2 border border-black w-10 font-extrabold">S.No</th>
+            <th className="p-2 border border-black text-left font-extrabold">Grant</th>
+            <th className="p-2 border border-black w-24 font-extrabold">Credited Date</th>
+            <th className="p-2 border border-black w-24 font-extrabold">Amount Released</th>
+            <th className="p-2 border border-black w-28 font-extrabold">Expenditure Incurred</th>
+            <th className="p-2 border border-black w-24 font-extrabold">Balance If any</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td className="p-1.5 border border-border text-center">{serialNo}</td>
-            <td className="p-1.5 border border-border">{grant.name}</td>
-            <td className="p-1.5 border border-border text-center">{grant.date}</td>
-            <td className="p-1.5 border border-border text-right">{grant.amount.toLocaleString("en-IN")}</td>
-            <td className="p-1.5 border border-border text-right">{grant.amount.toLocaleString("en-IN")}</td>
-            <td className="p-1.5 border border-border text-right">0</td>
+            <td className="p-1.5 border border-black text-center">{serialNo}</td>
+            <td className="p-1.5 border border-black">{grant.name}</td>
+            <td className="p-1.5 border border-black text-center">{grant.date}</td>
+            <td className="p-1.5 border border-black text-right">{grant.amount.toLocaleString("en-IN")}</td>
+            <td className="p-1.5 border border-black text-right">{grant.amount.toLocaleString("en-IN")}</td>
+            <td className="p-1.5 border border-black text-right">0</td>
           </tr>
         </tbody>
       </table>
@@ -109,54 +109,54 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
         their details of expenditure.
       </p>
 
-      <table className="w-full border-collapse mt-2 text-[12px]">
+      <table className="w-full border border-black border-collapse mt-2 text-[12px]">
         <thead>
           <tr className="bg-voucher-header text-voucher-header-foreground font-extrabold uppercase tracking-wide text-[12.5px]">
-            <th className="p-2 border border-voucher-header w-10 font-extrabold">S.No</th>
-            <th className="p-2 border border-voucher-header text-left w-[28%] font-extrabold">Credit Particulars</th>
-            <th className="p-2 border border-voucher-header text-left w-[22%] font-extrabold">PPA Description</th>
-            <th className="p-2 border border-voucher-header text-left font-extrabold">Sub-Voucher No. &amp; Date with Details of Expenditure</th>
+            <th className="p-2 border border-black w-10 font-extrabold">S.No</th>
+            <th className="p-2 border border-black text-left w-[28%] font-extrabold">Credit Particulars</th>
+            <th className="p-2 border border-black text-left w-[22%] font-extrabold">PPA Description</th>
+            <th className="p-2 border border-black text-left font-extrabold">Sub-Voucher No. &amp; Date with Details of Expenditure</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td className="p-1.5 border border-border text-center">1</td>
-            <td className="p-1.5 border border-border">PPA No. &amp; Date</td>
+            <td className="p-1.5 border border-black text-center">1</td>
+            <td className="p-1.5 border border-black">PPA No. &amp; Date</td>
             <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
             <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
           </tr>
           <tr>
-            <td className="p-1.5 border border-border text-center">2</td>
-            <td className="p-1.5 border border-border">In whose favour the PPA received</td>
+            <td className="p-1.5 border border-black text-center">2</td>
+            <td className="p-1.5 border border-black">In whose favour the PPA received</td>
             <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
             <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
           </tr>
           <tr>
-            <td className="p-1.5 border border-border text-center">3</td>
-            <td className="p-1.5 border border-border">Amount of the PPA (Rs.)</td>
+            <td className="p-1.5 border border-black text-center">3</td>
+            <td className="p-1.5 border border-black">Amount of the PPA (Rs.)</td>
             <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
             <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
           </tr>
           <tr>
-            <td className="p-1.5 border border-border text-center">4</td>
-            <td className="p-1.5 border border-border">Date of remittance into the bank</td>
+            <td className="p-1.5 border border-black text-center">4</td>
+            <td className="p-1.5 border border-black">Date of remittance into the bank</td>
             <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
             <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
           </tr>
           <tr>
-            <td className="p-1.5 border border-border text-center">5</td>
-            <td className="p-1.5 border border-border">Bank A/c No.</td>
+            <td className="p-1.5 border border-black text-center">5</td>
+            <td className="p-1.5 border border-black">Bank A/c No.</td>
             <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
             <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
           </tr>
           <tr>
-            <td className="p-1.5 border border-border text-center">6</td>
-            <td className="p-1.5 border border-border">In whose favour the above A/c exists</td>
+            <td className="p-1.5 border border-black text-center">6</td>
+            <td className="p-1.5 border border-black">In whose favour the above A/c exists</td>
             <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
             <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
           </tr>
           <tr className="bg-voucher-total font-bold">
-            <td colSpan={2} className="p-1.5 border border-border text-right">TOTAL</td>
+            <td colSpan={2} className="p-1.5 border border-black text-right">TOTAL</td>
             <td className={editableCellClass + " text-right"} contentEditable suppressContentEditableWarning></td>
             <td className={editableCellClass} contentEditable suppressContentEditableWarning></td>
           </tr>
