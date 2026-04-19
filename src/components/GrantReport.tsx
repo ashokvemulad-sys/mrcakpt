@@ -83,12 +83,12 @@ export const GrantReport = ({ record }: GrantReportProps) => {
       <table className="w-full border border-black border-collapse text-xs mt-2">
         <thead>
           <tr className="bg-report-header text-report-header-foreground">
-            <th className="p-1.5 text-left font-semibold border border-black w-8">S.No</th>
-            <th className="p-1.5 text-left font-semibold border border-black">Grant Name</th>
-            <th className="p-1.5 text-center font-semibold border border-black w-24">Credited Date</th>
-            <th className="p-1.5 text-right font-semibold border border-black w-24">Credited (₹)</th>
-            <th className="p-1.5 text-right font-semibold border border-black w-24">Utilized (₹)</th>
-            <th className="p-1.5 text-right font-semibold border border-black w-24">Balance (₹)</th>
+            <th className="p-1.5 text-left font-bold text-black border border-black w-8">S.No</th>
+            <th className="p-1.5 text-left font-bold text-black border border-black">Grant Name</th>
+            <th className="p-1.5 text-center font-bold text-black border border-black w-24">Credited Date</th>
+            <th className="p-1.5 text-right font-bold text-black border border-black w-24">Credited (₹)</th>
+            <th className="p-1.5 text-right font-bold text-black border border-black w-24">Utilized (₹)</th>
+            <th className="p-1.5 text-right font-bold text-black border border-black w-24">Balance (₹)</th>
           </tr>
         </thead>
         <tbody>
