@@ -1,4 +1,6 @@
 import { GrantRecord, Grant } from "@/data/grantsData";
+import logoSamagra from "@/assets/logo-samagra.png";
+import logoPfms from "@/assets/logo-pfms.png";
 
 interface GrantVoucherProps {
   record: GrantRecord;
@@ -44,21 +46,15 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
   return (
     <div className="voucher-page max-w-[210mm] mx-auto bg-white p-[8mm] h-[297mm] print:p-[8mm] print:max-w-none print:h-[297mm] border-2 border-voucher-header flex flex-col overflow-hidden text-[12.5px] leading-relaxed text-foreground" style={{ fontFamily: "'Calibri', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" }}>
       {/* Header */}
-      <div className="flex items-center justify-between gap-4 border-b border-border pb-2">
-        <img
-          src="https://www.samagrashiksha.telangana.gov.in/SamagraShiksha/images/logo.png"
-          alt="Samagra Shiksha Logo"
-          className="h-16 w-16 object-contain shrink-0"
-        />
-        <div className="flex-1 text-center">
+      <div className="border-b border-border pb-2">
+        <div className="flex items-center justify-between gap-4">
+          <img src={logoSamagra} alt="Samagra Shiksha Logo" className="h-14 object-contain shrink-0" />
+          <img src={logoPfms} alt="PFMS Logo" className="h-14 object-contain shrink-0" />
+        </div>
+        <div className="text-center mt-2">
           <h1 className="text-xl font-extrabold underline tracking-wider uppercase">UTILIZATION CERTIFICATE</h1>
           <p className="text-xs mt-0.5">Financial Year: {record.financialYear}</p>
         </div>
-        <img
-          src="https://pfms.nic.in/SitePages/images/logo.png"
-          alt="PFMS Logo"
-          className="h-16 w-16 object-contain shrink-0"
-        />
       </div>
 
       {/* Certification Paragraph */}
