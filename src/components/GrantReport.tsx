@@ -44,7 +44,7 @@ export const GrantReport = ({ record }: GrantReportProps) => {
       </div>
 
       {/* School Info */}
-      <div className="border border-t-0 border-border p-3 grid grid-cols-2 gap-y-2 gap-x-4 text-xs">
+      <div className="border border-t-0 border-border p-3 grid grid-cols-2 gap-y-2 gap-x-4 text-sm">
         <div>
           <span className="text-muted-foreground">School Name:</span>
           <p className="font-semibold text-foreground">{record.smcName}</p>
@@ -80,7 +80,7 @@ export const GrantReport = ({ record }: GrantReportProps) => {
       </div>
 
       {/* Grants Table */}
-      <table className="w-full border border-black border-collapse text-xs mt-2">
+      <table className="w-full border border-black border-collapse text-sm mt-2">
         <thead>
           <tr className="bg-report-header text-report-header-foreground">
             <th className="p-1.5 text-left font-bold text-black border border-black w-8">S.No</th>
@@ -143,20 +143,20 @@ export const GrantReport = ({ record }: GrantReportProps) => {
       </table>
 
       {/* Certification Text */}
-      <div className="mt-3 p-2 border border-border rounded text-xs text-foreground leading-relaxed text-justify">
+      <div className="mt-3 p-2 border border-border rounded text-sm text-foreground leading-relaxed text-justify">
         This is to Certify that, the above-mentioned funds (budget) are received and utilized as per the guidelines issued by the Director of School Education and Ex-Officio State Project Director, T-Samagra Shiksha, Hyderabad and the original bills are kept at SDU i.e., MRC / CRC / School / TSMS / KGBV / GH level and will be submit (facilitate) the same as required in future audit purpose i.e., Internal Audit, Statutory Audit and A.G. Team etc during the Audit.
       </div>
 
       {/* Enclosures & Signature */}
       <div className="mt-3 flex justify-between items-start">
-        <div className="text-[10px] text-foreground">
+        <div className="text-[12px] text-foreground">
           <p className="font-bold mb-1">Enclosures:</p>
           <p>1. Bank Statement (01.04.2025 to 31.03.2026)</p>
           <p>2. SMC Resolution Register Xerox Copies</p>
           <p>3. Print Payment Advice (PPA) Xerox Copies</p>
           <p>4. Bills &amp; Vouchers Xerox Copies</p>
         </div>
-        <div className="text-[10px] text-foreground text-right">
+        <div className="text-[12px] text-foreground text-right">
           <div className="border-b border-foreground w-44 mb-1 mt-6"></div>
           <p className="font-bold">Signature of Headmaster</p>
           <p className="font-semibold mt-0.5">{record.hmName || ""}</p>
@@ -170,13 +170,13 @@ export const GrantReport = ({ record }: GrantReportProps) => {
       </div>
 
       {/* Counter Signature */}
-      <div className="mt-auto pt-4 text-center text-[10px] text-foreground">
+      <div className="mt-auto pt-4 text-center text-[12px] text-foreground">
         <div className="border-b border-foreground w-48 mx-auto mb-1"></div>
         <p className="font-bold">Counter Signed by Mandal Educational Officer</p>
       </div>
 
       {/* Footer */}
-      <div className="mt-2 pt-2 border-t border-border text-[10px] text-muted-foreground flex justify-between">
+      <div className="mt-2 pt-2 border-t border-border text-[11px] text-muted-foreground flex justify-between">
         <span>Generated on: {new Date().toLocaleDateString("en-IN")}</span>
         <span>School Grants Management System</span>
       </div>
