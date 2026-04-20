@@ -73,12 +73,12 @@
 @media print {
   @page {
     size: A4;
-    margin: 12mm;
+    margin: 0;
   }
-  body {
+  html, body {
+    width: 210mm;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
-    font-size: 14pt;
   }
   .no-print {
     display: none !important;
@@ -88,5 +88,19 @@
   }
   .print-break {
     page-break-before: always;
+  }
+  /* Force each sheet to exactly one A4 page */
+  .voucher-page,
+  .a4-sheet {
+    width: 210mm !important;
+    height: 297mm !important;
+    page-break-after: always;
+    page-break-inside: avoid;
+    overflow: hidden !important;
+    box-sizing: border-box;
+  }
+  .voucher-page:last-child,
+  .a4-sheet:last-child {
+    page-break-after: auto;
   }
 }
