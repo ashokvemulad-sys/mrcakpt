@@ -18,8 +18,8 @@ export const SmcResolution = ({ record, grant, serialNo = 1 }: SmcResolutionProp
 
   return (
     <div
-      className="max-w-[210mm] mx-auto bg-white p-[10mm] h-[297mm] print:p-[10mm] print:max-w-none print:h-[297mm] border-2 border-voucher-header flex flex-col overflow-hidden text-[13px] leading-relaxed text-foreground"
-      style={{ fontFamily: "'AppNumerals', 'Bookman Old Style', 'URW Bookman L', 'Bookman', Georgia, serif" }}
+      className="max-w-[210mm] mx-auto bg-white p-[10mm] h-[297mm] print:p-[10mm] print:max-w-none print:h-[297mm] border-2 border-voucher-header flex flex-col overflow-hidden text-[14px] leading-relaxed text-foreground"
+      style={{ fontFamily: "'Times New Roman', Times, serif" }}
     >
       {/* Header */}
       <div className="border-b border-border pb-2">
