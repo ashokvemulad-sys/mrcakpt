@@ -3262,8 +3262,8 @@ export const grantsData: GrantRecord[] = [
     "bankIfsc": "CNRB0006471",
     "financialYear": "2025-26",
     "grandTotal": 154404,
-    "hmName": "P.KAVITHA",
-    "mobile": "9492555897",
+    "hmName": "G.SUJATHA",
+    "mobile": "9393796053",
     "grants": [
       {
         "name": "MRC - Teacher's Day",
