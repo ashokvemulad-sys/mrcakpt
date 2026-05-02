@@ -178,8 +178,8 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
         <p>Certified that the relevant Sub Vouchers are kept in the office and attached with this statement.</p>
       </div>
 
-      {/* Signatures */}
-      <div className="mt-16 flex justify-between text-[11px]">
+      {/* Signatures - pushed to bottom of page */}
+      <div className="mt-auto pt-6 flex justify-between text-[11px]">
         <div className="text-center">
           <div className="border-b border-foreground w-52 mb-1"></div>
           <p className="font-bold">Signature of the SMC Chairman / Sr. Teacher</p>
