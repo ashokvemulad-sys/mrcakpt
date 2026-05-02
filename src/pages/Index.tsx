@@ -199,6 +199,13 @@ const SelectedRecordView = ({
         >
           <ScrollText className="h-4 w-4" /> Resolutions ({nonZero.length})
         </Button>
+        <Button
+          variant={voucherView === "audit" ? "default" : "outline"}
+          onClick={() => setVoucherView("audit")}
+          className="gap-2"
+        >
+          <ClipboardList className="h-4 w-4" /> Audit Form
+        </Button>
         <Button onClick={save} className="bg-success text-success-foreground gap-2 hover:bg-success/90">
           <Save className="h-4 w-4" /> Save
         </Button>
