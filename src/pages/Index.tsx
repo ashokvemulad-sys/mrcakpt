@@ -12,7 +12,7 @@ import { useEditablePersist } from "@/hooks/use-editable-persist";
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedRecord, setSelectedRecord] = useState<GrantRecord | null>(null);
-  const [voucherView, setVoucherView] = useState<"summary" | "vouchers" | "resolutions">("summary");
+  const [voucherView, setVoucherView] = useState<"summary" | "vouchers" | "resolutions" | "audit">("summary");
   const [searchOpen, setSearchOpen] = useState(false);
 
   const filteredResults = useMemo(() => {
@@ -135,8 +135,8 @@ interface SelectedRecordViewProps {
   storageKey: string;
   record: GrantRecord;
   nonZero: GrantRecord["grants"];
-  voucherView: "summary" | "vouchers" | "resolutions";
-  setVoucherView: (v: "summary" | "vouchers" | "resolutions") => void;
+  voucherView: "summary" | "vouchers" | "resolutions" | "audit";
+  setVoucherView: (v: "summary" | "vouchers" | "resolutions" | "audit") => void;
   onBack: () => void;
   onPrint: () => void;
 }
