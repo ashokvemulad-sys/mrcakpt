@@ -18,7 +18,7 @@ export const SmcResolution = ({ record, grant, serialNo = 1 }: SmcResolutionProp
 
   return (
     <div
-      className="a4-sheet max-w-[210mm] mx-auto bg-white p-[10mm] h-[297mm] print:p-[10mm] print:max-w-none print:h-[297mm] border-2 border-voucher-header flex flex-col overflow-hidden text-[14px] leading-relaxed text-foreground"
+      className="a4-sheet max-w-[210mm] mx-auto bg-white p-[8mm] min-h-[297mm] print:p-[8mm] print:max-w-none print:min-h-[297mm] border-2 border-voucher-header flex flex-col text-[13px] leading-snug text-foreground"
       style={{ fontFamily: "'Times New Roman', Times, serif" }}
     >
       {/* Header */}
@@ -109,8 +109,8 @@ export const SmcResolution = ({ record, grant, serialNo = 1 }: SmcResolutionProp
         ))}
       </div>
 
-      {/* Headmaster signature */}
-      <div className="mt-16 flex justify-end text-[12px]">
+      {/* Headmaster signature - pushed to bottom */}
+      <div className="mt-auto pt-6 flex justify-end text-[12px]">
         <div className="text-center">
           <div className="border-b border-foreground w-52 mb-1"></div>
           <p className="font-bold">Headmaster</p>

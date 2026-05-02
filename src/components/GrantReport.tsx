@@ -31,7 +31,7 @@ export const GrantReport = ({ record }: GrantReportProps) => {
   const totalBalance = record.grandTotal - totalUtilized;
 
   return (
-    <div className="a4-sheet max-w-[210mm] mx-auto bg-white p-[10mm] h-[297mm] print:p-[10mm] print:max-w-none print:h-[297mm] border-2 border-[hsl(25,50%,35%)] flex flex-col overflow-hidden text-[14px] leading-relaxed" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
+    <div className="a4-sheet max-w-[210mm] mx-auto bg-white p-[8mm] min-h-[297mm] print:p-[8mm] print:max-w-none print:min-h-[297mm] border-2 border-[hsl(25,50%,35%)] flex flex-col text-[13px] leading-snug" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
       {/* Header */}
       <div className="p-3 border-b border-border">
         <div className="flex items-center justify-between gap-4">

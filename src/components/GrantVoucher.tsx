@@ -44,7 +44,7 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
     "p-1.5 border border-black outline-none focus:bg-accent/30 print:bg-transparent min-h-[28px] font-bold text-black";
 
   return (
-    <div className="voucher-page max-w-[210mm] mx-auto bg-white p-[8mm] h-[297mm] print:p-[8mm] print:max-w-none print:h-[297mm] border-2 border-voucher-header flex flex-col overflow-hidden text-[14px] leading-relaxed text-foreground" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
+    <div className="voucher-page max-w-[210mm] mx-auto bg-white p-[8mm] min-h-[297mm] print:p-[8mm] print:max-w-none print:min-h-[297mm] border-2 border-voucher-header flex flex-col text-[13px] leading-snug text-foreground" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
       {/* Header */}
       <div className="border-b border-border pb-2">
         <div className="flex items-center justify-between gap-4">
@@ -178,8 +178,8 @@ export const GrantVoucher = ({ record, grant, serialNo = 1 }: GrantVoucherProps)
         <p>Certified that the relevant Sub Vouchers are kept in the office and attached with this statement.</p>
       </div>
 
-      {/* Signatures */}
-      <div className="mt-16 flex justify-between text-[11px]">
+      {/* Signatures - pushed to bottom of page */}
+      <div className="mt-auto pt-6 flex justify-between text-[11px]">
         <div className="text-center">
           <div className="border-b border-foreground w-52 mb-1"></div>
           <p className="font-bold">Signature of the SMC Chairman / Sr. Teacher</p>

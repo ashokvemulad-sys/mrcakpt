@@ -89,15 +89,18 @@
   .print-break {
     page-break-before: always;
   }
-  /* Force each sheet to exactly one A4 page */
+  /* Each sheet sized to A4 but allow natural flow so nothing gets clipped */
   .voucher-page,
   .a4-sheet {
     width: 210mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
     height: 297mm !important;
     page-break-after: always;
     page-break-inside: avoid;
-    overflow: hidden !important;
+    overflow: visible !important;
     box-sizing: border-box;
+    border: none !important;
   }
   .voucher-page:last-child,
   .a4-sheet:last-child {
