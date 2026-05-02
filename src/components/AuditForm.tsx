@@ -12,8 +12,10 @@ export const AuditForm = ({ record }: AuditFormProps) => {
   const RECEIPTS_ROWS = 28; // total rows in receipts column (matches form)
   const PAYMENTS_ROWS = 28;
 
+  type Row = { label: string; amount?: string; bold?: boolean; indent?: boolean; prefix?: string };
+
   // Receipts: fixed leading rows
-  const receiptsFixed: { label: string; amount?: string; bold?: boolean; indent?: boolean }[] = [
+  const receiptsFixed: Row[] = [
     { label: "Opening Balance :", bold: true },
     { label: "Cash in Hand", indent: true },
     { label: "Cash at Bank", indent: true },
@@ -27,36 +29,36 @@ export const AuditForm = ({ record }: AuditFormProps) => {
   }));
 
   // Trailing receipts
-  const receiptsTrailing = [
+  const receiptsTrailing: Row[] = [
     { label: "Bank Interest", bold: true },
     { label: "Other Receipts (if any) :", bold: true },
     { label: "Hand Loan from HM / Principal", indent: true },
     { label: "Other Miscellaneous Receipts", bold: true },
   ];
 
-  const receiptsAll = [
+  const receiptsAll: Row[] = [
     ...receiptsFixed,
-    ...receiptsGrants.map((r) => ({ label: r.label, amount: r.amount })),
+    ...receiptsGrants.map((r) => ({ label: r.label, amount: r.amount }) as Row),
     ...receiptsTrailing,
   ];
   while (receiptsAll.length < RECEIPTS_ROWS) receiptsAll.push({ label: "" });
 
   // Payments rows
-  const paymentsFixed: { label: string; amount?: string; bold?: boolean; indent?: boolean; prefix?: string }[] = [
+  const paymentsFixed: Row[] = [
     { label: "Payments through PPAs", bold: true },
   ];
-  const paymentsGrants = nonZeroGrants.map((g) => ({
+  const paymentsGrants: Row[] = nonZeroGrants.map((g) => ({
     label: `${g.name} (${g.date})`,
     amount: g.amount.toLocaleString("en-IN"),
     prefix: "By",
   }));
-  const paymentsTrailing = [
+  const paymentsTrailing: Row[] = [
     { label: "Bank Charges", bold: true, prefix: "By" },
     { label: "Others - Payments (if any) :", bold: true, prefix: "By" },
     { label: "Hand Loan Repayment to HM / Principal", indent: true },
     { label: "Un-Utilized of SS Funds allocation amount Retrieval to DPO/SPO", bold: true, prefix: "By" },
   ];
-  const paymentsAll = [...paymentsFixed, ...paymentsGrants, ...paymentsTrailing];
+  const paymentsAll: Row[] = [...paymentsFixed, ...paymentsGrants, ...paymentsTrailing];
   while (paymentsAll.length < PAYMENTS_ROWS) paymentsAll.push({ label: "" });
 
   const rows = Math.max(receiptsAll.length, paymentsAll.length);
