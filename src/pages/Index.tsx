@@ -2,16 +2,17 @@ import { useState, useMemo } from "react";
 import { grantsData, GrantRecord } from "@/data/grantsData";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, Printer, X, FileText, Receipt, ScrollText, Save, RotateCcw } from "lucide-react";
+import { Search, Printer, X, FileText, Receipt, ScrollText, Save, RotateCcw, ClipboardList } from "lucide-react";
 import { GrantReport } from "@/components/GrantReport";
 import { GrantVoucher } from "@/components/GrantVoucher";
 import { SmcResolution } from "@/components/SmcResolution";
+import { AuditForm } from "@/components/AuditForm";
 import { useEditablePersist } from "@/hooks/use-editable-persist";
 
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedRecord, setSelectedRecord] = useState<GrantRecord | null>(null);
-  const [voucherView, setVoucherView] = useState<"summary" | "vouchers" | "resolutions">("summary");
+  const [voucherView, setVoucherView] = useState<"summary" | "vouchers" | "resolutions" | "audit">("summary");
   const [searchOpen, setSearchOpen] = useState(false);
 
   const filteredResults = useMemo(() => {
@@ -134,8 +135,8 @@ interface SelectedRecordViewProps {
   storageKey: string;
   record: GrantRecord;
   nonZero: GrantRecord["grants"];
-  voucherView: "summary" | "vouchers" | "resolutions";
-  setVoucherView: (v: "summary" | "vouchers" | "resolutions") => void;
+  voucherView: "summary" | "vouchers" | "resolutions" | "audit";
+  setVoucherView: (v: "summary" | "vouchers" | "resolutions" | "audit") => void;
   onBack: () => void;
   onPrint: () => void;
 }
@@ -164,7 +165,7 @@ const SelectedRecordView = ({
               </div>
             ))}
           </div>
-        ) : (
+        ) : voucherView === "resolutions" ? (
           <div>
             {nonZero.map((grant, gIdx) => (
               <div key={gIdx} className="print:break-after-page">
@@ -172,6 +173,8 @@ const SelectedRecordView = ({
               </div>
             ))}
           </div>
+        ) : (
+          <AuditForm record={record} />
         )}
       </div>
       <div className="no-print fixed bottom-0 left-0 right-0 flex gap-2 flex-wrap justify-center py-4 border-t border-border bg-background/95 backdrop-blur shadow-lg z-50">
@@ -195,6 +198,13 @@ const SelectedRecordView = ({
           className="gap-2"
         >
           <ScrollText className="h-4 w-4" /> Resolutions ({nonZero.length})
+        </Button>
+        <Button
+          variant={voucherView === "audit" ? "default" : "outline"}
+          onClick={() => setVoucherView("audit")}
+          className="gap-2"
+        >
+          <ClipboardList className="h-4 w-4" /> Audit Form
         </Button>
         <Button onClick={save} className="bg-success text-success-foreground gap-2 hover:bg-success/90">
           <Save className="h-4 w-4" /> Save
