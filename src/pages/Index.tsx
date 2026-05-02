@@ -2,10 +2,11 @@ import { useState, useMemo } from "react";
 import { grantsData, GrantRecord } from "@/data/grantsData";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, Printer, X, FileText, Receipt, ScrollText, Save, RotateCcw } from "lucide-react";
+import { Search, Printer, X, FileText, Receipt, ScrollText, Save, RotateCcw, ClipboardList } from "lucide-react";
 import { GrantReport } from "@/components/GrantReport";
 import { GrantVoucher } from "@/components/GrantVoucher";
 import { SmcResolution } from "@/components/SmcResolution";
+import { AuditForm } from "@/components/AuditForm";
 import { useEditablePersist } from "@/hooks/use-editable-persist";
 
 const Index = () => {
