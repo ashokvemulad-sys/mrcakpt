@@ -120,10 +120,10 @@ export const AuditForm = ({ record }: AuditFormProps) => {
         </thead>
         <tbody>
           {Array.from({ length: rows }).map((_, i) => {
-            const r = receiptsAll[i] || { label: "" };
-            const p = paymentsAll[i] || { label: "" };
-            const rPrefix = r.label && !r.indent ? "To" : "";
-            const pPrefix = (p as any).prefix ?? (p.label && !(p as any).indent ? "By" : "");
+            const r: Row = receiptsAll[i] || { label: "" };
+            const p: Row = paymentsAll[i] || { label: "" };
+            const rPrefix = r.prefix ?? (r.label && !r.indent ? "To" : "");
+            const pPrefix = p.prefix ?? (p.label && !p.indent ? "By" : "");
             return (
               <tr key={i}>
                 <td className="border border-black px-1 py-[3px] text-center align-top">{rPrefix}</td>
@@ -131,14 +131,14 @@ export const AuditForm = ({ record }: AuditFormProps) => {
                   {r.label}
                 </td>
                 <td className="border border-black px-1 py-[3px] text-right align-top">
-                  {(r as any).amount || ""}
+                  {r.amount || ""}
                 </td>
                 <td className="border border-black px-1 py-[3px] text-center align-top">{pPrefix}</td>
-                <td className={`border border-black px-1 py-[3px] align-top ${p.bold ? "font-bold" : ""} ${(p as any).indent ? "pl-4" : ""}`}>
+                <td className={`border border-black px-1 py-[3px] align-top ${p.bold ? "font-bold" : ""} ${p.indent ? "pl-4" : ""}`}>
                   {p.label}
                 </td>
                 <td className="border border-black px-1 py-[3px] text-right align-top">
-                  {(p as any).amount || ""}
+                  {p.amount || ""}
                 </td>
               </tr>
             );
