@@ -165,7 +165,7 @@ const SelectedRecordView = ({
               </div>
             ))}
           </div>
-        ) : (
+        ) : voucherView === "resolutions" ? (
           <div>
             {nonZero.map((grant, gIdx) => (
               <div key={gIdx} className="print:break-after-page">
@@ -173,6 +173,8 @@ const SelectedRecordView = ({
               </div>
             ))}
           </div>
+        ) : (
+          <AuditForm record={record} />
         )}
       </div>
       <div className="no-print fixed bottom-0 left-0 right-0 flex gap-2 flex-wrap justify-center py-4 border-t border-border bg-background/95 backdrop-blur shadow-lg z-50">
