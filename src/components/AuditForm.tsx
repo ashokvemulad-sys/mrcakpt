@@ -8,27 +8,20 @@ export const AuditForm = ({ record }: AuditFormProps) => {
   const nonZeroGrants = record.grants.filter((g) => g.amount > 0);
   const totalReceipts = record.grandTotal;
 
-  // Build receipts rows: opening (cash in hand, cash at bank), then each grant, then bank interest, others
-  const RECEIPTS_ROWS = 28; // total rows in receipts column (matches form)
-  const PAYMENTS_ROWS = 28;
-
   type Row = { label: string; amount?: string; bold?: boolean; indent?: boolean; prefix?: string };
 
-  // Receipts: fixed leading rows
   const receiptsFixed: Row[] = [
     { label: "Opening Balance :", bold: true },
     { label: "Cash in Hand", indent: true },
     { label: "Cash at Bank", indent: true },
-    { label: "Funds Allocation from DPO (Budget/Funds Allocation amount should be Taken as a Receipts)", bold: true },
+    { label: "Funds Allocation from DPO (Budget should be Taken as Receipts)", bold: true },
   ];
 
-  // Each grant becomes a receipt row
-  const receiptsGrants = nonZeroGrants.map((g) => ({
+  const receiptsGrants: Row[] = nonZeroGrants.map((g) => ({
     label: `${g.name} (${g.date})`,
     amount: g.amount.toLocaleString("en-IN"),
   }));
 
-  // Trailing receipts
   const receiptsTrailing: Row[] = [
     { label: "Bank Interest", bold: true },
     { label: "Other Receipts (if any) :", bold: true },
@@ -36,14 +29,8 @@ export const AuditForm = ({ record }: AuditFormProps) => {
     { label: "Other Miscellaneous Receipts", bold: true },
   ];
 
-  const receiptsAll: Row[] = [
-    ...receiptsFixed,
-    ...receiptsGrants.map((r) => ({ label: r.label, amount: r.amount }) as Row),
-    ...receiptsTrailing,
-  ];
-  while (receiptsAll.length < RECEIPTS_ROWS) receiptsAll.push({ label: "" });
+  const receiptsAll: Row[] = [...receiptsFixed, ...receiptsGrants, ...receiptsTrailing];
 
-  // Payments rows
   const paymentsFixed: Row[] = [
     { label: "Payments through PPAs", bold: true },
   ];
@@ -56,12 +43,14 @@ export const AuditForm = ({ record }: AuditFormProps) => {
     { label: "Bank Charges", bold: true, prefix: "By" },
     { label: "Others - Payments (if any) :", bold: true, prefix: "By" },
     { label: "Hand Loan Repayment to HM / Principal", indent: true },
-    { label: "Un-Utilized of SS Funds allocation amount Retrieval to DPO/SPO", bold: true, prefix: "By" },
+    { label: "Un-Utilized SS Funds Retrieval to DPO/SPO", bold: true, prefix: "By" },
   ];
   const paymentsAll: Row[] = [...paymentsFixed, ...paymentsGrants, ...paymentsTrailing];
-  while (paymentsAll.length < PAYMENTS_ROWS) paymentsAll.push({ label: "" });
 
+  // Balance both sides — pad only the shorter column so totals align, no extra filler.
   const rows = Math.max(receiptsAll.length, paymentsAll.length);
+  while (receiptsAll.length < rows) receiptsAll.push({ label: "" });
+  while (paymentsAll.length < rows) paymentsAll.push({ label: "" });
 
   return (
     <div
@@ -110,11 +99,11 @@ export const AuditForm = ({ record }: AuditFormProps) => {
       <table className="w-full border border-black border-collapse">
         <thead>
           <tr className="font-bold text-center">
-            <th className="border border-black px-1 py-1 w-[4%]"></th>
-            <th className="border border-black px-1 py-1 w-[42%]">Receipts</th>
+            <th className="border border-black px-1 py-1 w-[3%]"></th>
+            <th className="border border-black px-1 py-1 w-[35%]">Receipts</th>
             <th className="border border-black px-1 py-1 w-[12%]">Amount (Rs)</th>
-            <th className="border border-black px-1 py-1 w-[4%]"></th>
-            <th className="border border-black px-1 py-1 w-[26%]">Payments</th>
+            <th className="border border-black px-1 py-1 w-[3%]"></th>
+            <th className="border border-black px-1 py-1 w-[35%]">Payments</th>
             <th className="border border-black px-1 py-1 w-[12%]">Amount (Rs)</th>
           </tr>
         </thead>
